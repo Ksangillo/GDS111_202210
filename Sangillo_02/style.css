@@ -1,0 +1,45 @@
+body{
+
+background-color: cyan;
+
+font-size:14;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+#container{
+    width:970px;
+    padding:10px;
+    text-align:center;
+
+}
+
+h1{
+
+width:950px;
+padding:10px;
+text-align:center;
+background-color:white;
+border:orangered solid 2px;
+
+}
+
+h2.Sections{
+
+width:950px;
+padding:10px;
+text-align:left;
+
+}
+
+img{
+
+border:green solid 10px;
+
+
+}
+
+a.Army{
+
+color:green;
+
+}

@@ -1,29 +1,39 @@
-#header{
+body{
+background-color: orangered;
 
+}
+
+
+h1{
 
     position:relative;
     width:2000px;
     height:50px;
-    margin:top;
     background-color: cyan;
-
+    margin:top;
+    
 }
 
 #nav{
-
-    position:absolute;
-    width:3000px;
-    height:50px;
-    margin:80px 100px 0 0;
+    position:relative;
+    width:2000px;
+    height:40px;
     background-color: cyan;
+    margin:top;
 
 
 
-
-  
 }
 
+.btn{
 
+    position:relative;
+    width:2000px;
+    height:400px;
+    margin:0 100px 0 100px;
+
+
+}
 
 
 

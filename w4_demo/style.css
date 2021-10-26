@@ -1,0 +1,45 @@
+
+/*background applies to all content unless id/calss/elemnts styles differently*/
+body{
+
+    background-image:url(images/background.png);
+    background-color: darkgrey;
+
+}
+
+
+div{
+
+    border:1px solid black;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:  10px;
+
+
+
+
+}
+
+
+#wrapper{
+
+width:1000px;
+margin:auto;
+box-shadow:-5px 10px 10px purple;
+border-radius:50px;/*rounds corners of block level elements*/
+}
+
+/*Header----------------*/
+
+
+/*Nav-------------------*/
+
+
+
+/*Content----------*/
+
+
+/*FOOTER----------------------*/
+
+
+/*Page Specific-------------------------------------*/

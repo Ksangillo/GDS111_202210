@@ -1,25 +1,30 @@
 body{
-background-color: orangered;
+    background-color: orangered;
+
 
 }
 
 
 h1{
 
-    position:relative;
-    width:2000px;
-    height:50px;
-    background-color: cyan;
-    margin:top;
-    
+        position:relative;
+        width:2000px;
+        height:100px;
+        background-color: cyan;
+        margin:10px -10px;
+        
 }
 
 #nav{
-    position:relative;
-    width:2000px;
-    height:40px;
-    background-color: cyan;
-    margin:top;
+
+        float:top;
+        position:relative;
+        width:2000px;
+        height:50px;
+        font-size:40px;
+        background-color: cyan;
+        margin:30px -80px;
+
 
 
 
@@ -27,15 +32,47 @@ h1{
 
 .btn{
 
-    position:relative;
-    width:2000px;
-    height:400px;
-    margin:0 100px 0 100px;
+        float:top;
+        position:relative;
+        width:2000px;
+        height:400px;
+        font-size:40px;
+        color:black;
+        background-color: yellow;
+        margin: 0 400px 300px 100px;
+}
+
+.btn:hover{
+
+    background-color: red;
+    color:black
 
 
 }
 
+#content{
 
+    position:relative;
+    width:1000px;
+    height:500px;
+    font-size:20px;
+    background-color: cyan;
+    margin: 90px 0 400px 0;
+
+
+
+}
+
+.bio{
+
+    position:fixed;
+    width:900px;
+    height:80px;
+    background-color:yellow;
+    color:black;
+    margin:-100px 0px;
+
+}
 
 
 

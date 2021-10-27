@@ -5,28 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+ 
+    <link rel="stylesheet" type="text/css" href="Style.css"/>
+    <script type="text/javascript" src="week4.js"></script>
+
+
 </head>
 <body>
 
 
+    <div id="wrapper">
+
+        <div id="header">
+            <h1 id= "title">Kyle Sangillo</h1>
 
 
 
+        </div><!--header-->
+
+
+         <div id="nav">
+            
+            <div id="buttons"><!--div that will center the nav buttons in the nav bar-->
+
+                <a href="index.html"class="nav-link">HOME</a>
+                <a href="school.html"class="nav-link">SCHOOLS</a>
+                <a href="riddles.html"class="nav-link">RIDDLES</a>
+
+
+            </div><!--#buttons-->
+
+
+        </div><!--nav-->
 
 
 
+    <div class="questions"><!--question1--------------------------------------->
+
+        <p class="question-text">1.What flows dosen't die but kill you slowly?</p>
+
+        <div class="answer-btn">
+            <!--creates clickable button; connected to JS function call-->
+            <input class="get" type=button value="ANSWER" onclick="answer1();"/>
+
+        </div><!--.answer-btn-->
+
+         <!--create empty element space for JS to write answer to in page-->
+        <span class="the-answer" id="question1"></span>
+
+        
 
 
+        <div id="footer">
+
+            <p class="copy">&copy;2021| K Sangillo| GDS111.21</p>
 
 
+        </div><!--#footer-->
 
 
-
-
-
-
-
-    
+    </div>
     
 </body>
 </html>

@@ -47,7 +47,7 @@ body{
 .btn{
 
         position:relative;
-        background-color: orangered;
+        background-color: greenyellow;
         font:40px solid black;
         margin:0 50px 0 100px;
         border-radius: 10px;
@@ -123,7 +123,7 @@ color: black;
 
         position:relative;
         width:1000px;
-        height:60px;
+        height:50px;
         font-size: 14;
         background-color: cyan;
         margin: -30px 600px 900px 400px;

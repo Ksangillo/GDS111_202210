@@ -1,0 +1,45 @@
+
+#gate{
+
+    background-color: orange;
+    border:1px solid red;
+    margin:10px;
+    padding:10px;
+    
+}
+#wrapper {
+
+    width:980px;
+    margin:auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+header {
+    text-align:center;
+    color: red;
+    background-color: black;
+
+}
+
+
+div {
+    background-color: orange;
+    border:1px solid red;
+    margin:10px;
+    padding:10px;
+
+}
+
+img{
+    width:600px;  
+}
+
+
+footer {
+
+    text-align:center;
+    height:50px;
+    background-color: red;
+}
+

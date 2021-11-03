@@ -1,12 +1,8 @@
-
-#gate{
-
-    background-color: orange;
-    border:1px solid red;
-    margin:10px;
-    padding:10px;
-    
+body{
+    background-image: url(images/spookyforest.jpg);
 }
+
+
 #wrapper {
 
     width:980px;
@@ -24,15 +20,63 @@ header {
 
 
 div {
+
     background-color: orange;
-    border:1px solid red;
+    border:5px solid black;
     margin:10px;
     padding:10px;
 
 }
 
+nav{
+    position: relative;
+    border:1px solid red;
+    margin:10px;
+    padding:10px;
+    text-align: center;
+    background-color:red;
+
+}
+
+#left{
+    width:400px;
+    border:5px solid black;
+
+
+}
+
+#total-ammo{
+        
+        border:5px solid black;
+        width:50px;
+        height:30px;
+        margin:45px 20px;
+}
+
+
+
+
+#current-ammo{
+        position:absolute;
+        width:50px;
+        height:30px;
+        border:5px solid black;
+        margin:-105px 150px;
+        
+
+}
+
+
+
+
+
+
 img{
-    width:600px;  
+    position:relative;
+    width:600px;
+    margin:0 100px 0 150px;
+    border:5px solid red;
+    border-radius:1000px; 
 }
 
 
@@ -41,5 +85,6 @@ footer {
     text-align:center;
     height:50px;
     background-color: red;
+    border:5px solid black;
 }
 

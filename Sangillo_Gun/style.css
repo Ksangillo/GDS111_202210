@@ -4,7 +4,8 @@ body{
 
 
 #wrapper {
-
+    background-color:orange;
+    font-size:14px;
     width:980px;
     margin:auto;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -19,14 +20,34 @@ header {
 }
 
 
-div {
+h2{
+    position:absolute;
+    background-color: black;
+    color:red;
+    width:200px;
+    height:20px;
+    padding:10px;
+    border-radius: 5px solid black;
+    margin:-300px 0 0 350px;
+}
 
-    background-color: orange;
+
+h2:hover{
+
+    background-color: yellow;
+
+}
+
+
+div {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
     border:5px solid black;
     margin:10px;
     padding:10px;
 
 }
+
 
 nav{
     position: relative;
@@ -38,6 +59,7 @@ nav{
 
 }
 
+
 #left{
     width:400px;
     border:5px solid black;
@@ -45,30 +67,76 @@ nav{
 
 }
 
+
 #total-ammo{
         
         border:5px solid black;
         width:50px;
-        height:30px;
-        margin:45px 20px;
+        padding:10px;
+        margin:56px 20px;
 }
-
 
 
 
 #current-ammo{
         position:absolute;
         width:50px;
-        height:30px;
         border:5px solid black;
-        margin:-105px 150px;
+        Padding:10px;
+        margin:-103px 150px;
         
 
 }
 
+#right{
+
+    width:400px;
+    height:140px;
+    border:5px solid black;
+    padding: 10px;
+    margin:-170px 0 0 450px;
+}
 
 
+.shoot{
+    
+    position:absolute;
+    background-color:orange;
+    color: black;
+    width:100px;
+    height:50px;
+    border:5px solid black;
+    Padding:10px;
+    margin: 30px 0 0 50px;
+    
+}
 
+.shoot:hover{
+
+    background-color: red;
+
+}
+
+
+.reload{
+   
+    position:relative;
+    color: black;
+    background-color:orange;
+    width:100px;
+    height:50px;
+    border:5px solid black;
+    Padding:10px;
+    margin:30px 400px 0 30px;
+
+}
+
+
+.reload:hover{
+
+    background-color: red;
+
+}
 
 
 img{
@@ -83,8 +151,10 @@ img{
 footer {
 
     text-align:center;
-    height:50px;
+    width:980px;
+    height:80px;
     background-color: red;
     border:5px solid black;
+    margin-right:100px;
 }
 

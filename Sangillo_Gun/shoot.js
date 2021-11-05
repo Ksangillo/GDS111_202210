@@ -21,9 +21,13 @@ function shoot() {
         //faster way//
         currentAmmo-- //decrementation; minus 1//
 
-
         document.getElementById("gun").play();// audio plays for shooting
+
+        
+        
     }//if-currentAmmo//
+
+  
 
 
     //once the if statement code has run, update the screen

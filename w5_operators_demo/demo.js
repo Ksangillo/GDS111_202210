@@ -11,7 +11,7 @@ var currentAmmo = maxAmmo
 function shoot() {
 
     //conditional statement -->checks for TRUTH; uses relational (conditonal) operators//
-    if (currentAmmo>0) {
+    if (currentAmmo > 0) {
 
         //lower current Ammo in gun by 1
         //long math way (right of = happens FIRST, storage happens right to left) currentAmmo = currentAmmo-1"//
@@ -24,6 +24,10 @@ function shoot() {
 
 
         document.getElementById("gun").play();// audio plays for shooting
+        
+         currentammo = 0 sound.pause();
+
+
     }//if-currentAmmo//
 
 
@@ -33,8 +37,6 @@ function shoot() {
     //gun sound will play as fast as you hit the trigger by setting it back to zero each time you shoot
     document.getElementById("gun").play();
     currentTime = 0;
-
-
 
 
 }//shoot() END
@@ -77,7 +79,6 @@ function reload() {
         document.getElementById("reload").play();
 
     }
-
 
 
     if (totalAmmo >= difference) {

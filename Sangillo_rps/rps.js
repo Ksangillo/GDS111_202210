@@ -88,6 +88,3 @@ function play(pChoice)
              break;
     }
 }
-
-
-    

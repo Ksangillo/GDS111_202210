@@ -1,21 +1,41 @@
 body{
     display:flex;
     justify-content:center;
+    background-image:url(images/background.jpg);
 }
+
+img{
+
+ width:80px;
+ height:80px;
+ margin: 0 0 0 200px;
+}
+
 nav{
     display:flex;
     justify-content:center;
+   
+}button:hover{
+
+background-color: crimson;
+
 }
+
+
 #container{
     box-sizing:border-box;
     width:1018px;
-    border:1px solid black;
+    border:5px solid orange;
     padding:7px;
+    background-color: orangered;
+    color: black;
+    font-family: 'Times New Roman';
 }
 canvas{
-    border: 1px solid black;
+    border: 3px solid red;
     box-sizing:border-box;
-    font-family:'Times New Roman';
+    font-family:'Arial';
+    text-align: center;
 }
 a:link, a:visited{
     display:inline-block;

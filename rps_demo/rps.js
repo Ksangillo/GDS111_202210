@@ -65,8 +65,9 @@ function play(id){
     var p_choice = id
 
     //ramdomize the computer's choices 2.9 helps!
-    var c_choice = Math.floor(Math.random() * 2.9)
-
+    var c_choice = Math.floor(Math.random() * 2.999999)
+    alert(rps[pChoice] + " " + rps[cChoice]) 
+    
 
     //swap the starting images with the highlighted ones
     swap(pId[p_choice], pics2[p_choice])

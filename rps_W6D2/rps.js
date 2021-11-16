@@ -1,7 +1,10 @@
+//RPS Part 1 Javascript -- W6D1 class
+
 //create an Array that will store the images being used
 //ARRAY: it's just like a variable (so it's a data storage device) BUT it can contain more than one value
 
 var pics = new Array() //creates an empty array
+
 
 //assign values to array -- "population"
 //[#] denotes index --> it's like a house number and array is the street name; array name + index gives access to the indiv value
@@ -14,6 +17,9 @@ var pics2 = new Array()
 pics2[0] = "images/rock2.jpg"
 pics2[1] = "images/paper2.jpg"
 pics2[2] = "images/scissors2.jpg"
+
+
+
 
 //create array holding the button elements
 //document.querySelectorAll grabs all of one element type
@@ -70,6 +76,7 @@ function play(id) {
 
     //SWITCH TIME - switch statements give us the option to determine a set of code to run based on a predetermined case value 
 
+                
     switch(p_choice) {
         //cases need to be built for *every* option p_choice can be! 
 

@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div id="container">
         <h2>Player</h2>
+
         <div class="player">
     
             <img src="images/rock.jpg" id ="rock_p" onclick="play(0);"/>
             <img src="images/paper.jpg" id ="paper_p" onclick="play(1);"/>
             <img src="images/scissors.jpg" id ="scissors_p" onclick="play(2);"/>
+
+            
             
             <h2>Computer</h2>
             <div class="computer">
@@ -24,6 +28,7 @@
             <img src="images/paper.jpg" id ="paper_c"/>
             <img src="images/scissors.jpg" id ="scissors_c"/>
         </div><!-- p =.player-->
+
 
         <br>
         <br>
@@ -39,13 +44,14 @@
         <div id="results">
 
             <p>PLAYER CHOSE: <span id="pChoice"></span></p>
+            <br>
             <p>COMPUTER CHOSE: <span id="cChoice"></span></p>
             <br>
             <p>GAME OUTCOME: <span id="results"></span></p>
 
         </div><!--#results-->
         
-        <canvas width="1000" height="600"></canvas>
+        <canvas width="980" height="300"></canvas>
     </div>
     <script src="rps.js"></script>
 </body>

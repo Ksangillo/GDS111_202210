@@ -4,11 +4,12 @@ body{
     background-image:url(images/background.jpg);
 }
 
+
 img{
 
  width:80px;
  height:80px;
- margin: 0 0 0 200px;
+ margin: 0 100px 0 100px;
 }
 
 nav{
@@ -25,18 +26,17 @@ background-color: crimson;
 #container{
     box-sizing:border-box;
     width:1018px;
-    border:5px solid orange;
-    padding:7px;
+    border:5px solid purple;
+    
+    padding:10px;
     background-color: orangered;
-    color: black;
-    font-family: 'Times New Roman';
-}
-canvas{
-    border: 3px solid red;
-    box-sizing:border-box;
-    font-family:'Arial';
+    color: cyan;
+    font-family: "Georgia";
+    font-size:20px;
     text-align: center;
+    margin-top:100px;
 }
+
 a:link, a:visited{
     display:inline-block;
     background-color:yellow;

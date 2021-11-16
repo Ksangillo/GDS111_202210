@@ -78,23 +78,22 @@ function play(id) {
             if (c_choice == 0) {//comp is rock
 
                 //alert the user that there has been a draw
-                alert("Bloody hell let's call it a DRAW!")
+               
 
                 //call showResults() and pass correct values for: pChoice, cChoice, Results
-                showResults("Rock!", "Rock!", "It's a DRAW XD")
+                showResults("Rock!", "Rock!", "Draw")
 
             }
             else if (c_choice == 1) {//comp is paper
 
-                alert("You LOST to the computer!")
+               
 
-                showResults("Rock!", "Paper!", "You LOST :[ ")
+                showResults("Rock!", "Paper!", "You LOST :P ")
             }
             else {//comp is scissors
 
-                alert("You WIN with your ROCK!")
-
-                showResults("Rock!", "Scissors!", "You WON :D")
+                
+                showResults("Rock!", "Scissors!", "You WON :O")
             }
 
             //break statements breaks us out of the switch/case
@@ -105,15 +104,18 @@ function play(id) {
             if (c_choice == 1) {//comp is paper
 
                 //alert the user that there has been a draw
-                alert("Bloody hell let's call it a DRAW!")
+                
+                showResults("Paper!", "Paper!", "Draw :O ")
             }
             else if (c_choice == 2) {//comp is scissors
     
-                alert("You LOST to the computer!")
+                
+                showResults("Paper!", "Scissors!", "You Lost :P")
             }
-            else {//comp is scissors
+            else {//comp is Rock
     
-                alert("You WIN with your PAPER!")
+                
+                showResults("Paper", "Rock!", "You Won :O")
             }
 
             break
@@ -123,15 +125,18 @@ function play(id) {
             if (c_choice == 2) {//comp is scissors
 
                 //alert the user that there has been a draw
-                alert("Bloody hell let's call it a DRAW!")
+                
+                showResults("Scissors!", "Scissors!", "Draw :O")
             }
             else if (c_choice == 0) {//comp is rock
     
-                alert("You LOST to the computer!")
+                
+                showResults("Scissors!", "Rock!", "You Lost :P")
             }
             else {//comp is paper
     
-                alert("You WIN with your SCISSORS!")
+                
+                showResults("Scissors!", "Paper!", "You Win :O")
             }
             break
 

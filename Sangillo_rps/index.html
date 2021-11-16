@@ -10,6 +10,7 @@
 <body>
 
     <div id="container">
+        <h1>EPIC RPS!!!</h1>
         <h2>Player</h2>
 
         <div class="player">
@@ -18,7 +19,7 @@
             <img src="images/paper.jpg" id ="paper_p" onclick="play(1);"/>
             <img src="images/scissors.jpg" id ="scissors_p" onclick="play(2);"/>
 
-            
+            <hr>
             
             <h2>Computer</h2>
             <div class="computer">
@@ -29,11 +30,12 @@
             <img src="images/scissors.jpg" id ="scissors_c"/>
         </div><!-- p =.player-->
 
+            <hr>
 
         <br>
-        <br>
-        <br>
-        <br>
+        
+        
+        
 
         <nav>
             <button id="rock">Rock</button>
@@ -41,7 +43,7 @@
             <button id="scissors">Scissors</button>
         </nav>
 
-        <div id="results">
+       <div id="result">
 
             <p>PLAYER CHOSE: <span id="pChoice"></span></p>
             <br>
@@ -49,9 +51,9 @@
             <br>
             <p>GAME OUTCOME: <span id="results"></span></p>
 
-        </div><!--#results-->
+        </div><!--#results--> 
         
-        <canvas width="980" height="300"></canvas>
+        
     </div>
     <script src="rps.js"></script>
 </body>

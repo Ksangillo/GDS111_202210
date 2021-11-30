@@ -101,7 +101,7 @@ function animate() {
 
     }
 
-    if(ship.y > canvas.width()+25){
+    if(ship.y > canvas.height()+25){
 
 
         //if the current ship y coord is greater than (beyond) the canvas width + 25 (size of the ship)
@@ -111,6 +111,7 @@ function animate() {
 
 
     }
+    
 
 
 }// close of animate function

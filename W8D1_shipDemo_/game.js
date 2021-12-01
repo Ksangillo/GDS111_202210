@@ -27,8 +27,6 @@ $(document).ready(function(e){
     timer = setInterval("animate();", 33) //33 100 miliseconds= 1 second?
 
 
-
-
 })//end of Ready()
 
 
@@ -77,7 +75,6 @@ function animate() {
     }
 
 
-
     //apply friction to the velocity -- realsitic slow down, speed increases are never instant
     ship.vx *= friction
     ship.vy *= friction
@@ -87,6 +84,7 @@ function animate() {
     ship.move()
     ship.draw()
 
+    //ship leaves right returns left
     if(ship.x > canvas.width()+25){
 
 
@@ -95,23 +93,42 @@ function animate() {
         //move ship X coord 
         ship.x = -25
 
-
-
-
-
     }
 
+    //if ship leaves bottom edge returns to top edge
     if(ship.y > canvas.height()+25){
 
 
         //if the current ship y coord is greater than (beyond) the canvas width + 25 (size of the ship)
 
         //move ship y coord 
-        ship.y = +25
+        ship.y = -25
+
+    }
+
+    //if ship left returns right
+    if(ship.x < -25){//o is the x coord of left margin, 25 is the length of the ship
+
+
+        //if the current ship x coord is greater than (beyond) the canvas width + 25 (size of the ship)
+
+        //move ship X coord 
+        ship.x = 825//800 is the x coord of the right canvas margin
 
 
     }
-    
+
+     //if ship top returns botttom
+     if(ship.y < -25){//o is the x coord of left margin, 25 is the length of the ship
+
+
+        //if the current ship x coord is greater than (beyond) the canvas width + 25 (size of the ship)
+
+        //move ship X coord 
+        ship.y = 825//800 is the x coord of the right canvas margin
+
+
+    }
 
 
 }// close of animate function

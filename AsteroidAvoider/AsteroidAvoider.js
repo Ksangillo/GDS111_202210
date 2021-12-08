@@ -38,7 +38,7 @@ function Asteroid(){
         ctx.save()
         ctx.beginPath()
         ctx.fillStyle = this.color
-        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true)
+        ctx.arc(this.y, this.x, this.radius, 0, 2 * Math.PI, true)
         ctx.closePath()
         ctx.fill()
         ctx.restore()
@@ -71,8 +71,8 @@ function pressKeyDown(e){
 
     if(gameOver){
 
-        //checking for spacebar
-        if(e.keyCode == 32){
+        //checking for Enter
+        if(e.keyCode == 13){
             if(currentState == 2){
                 //game over screen reatarts game
                 currentState = 0
@@ -135,7 +135,7 @@ function PlayerShip(){
 
     this.drawShip = function(){
        ctx.save()
-        ctx.translate(this.x, this.y)
+        ctx.translate(this.y, this.x)//postion
         if(this.up || this.left || this.right){
             ctx.save()
             //Changes the drawing values to animate the flame
@@ -201,11 +201,11 @@ function PlayerShip(){
 gameStates[0] = function(){
     ctx.save()
     ctx.font = "30px Arial"
-    ctx.fillStyle = "white"
+    ctx.fillStyle = "Blue"
     ctx.textAlign = "center"
     ctx.fillText("Asteroid Avoider", canvas.width/2, canvas.height/2-30)
     ctx.font = "15px Arial"
-    ctx.fillText("Press Space to Start", canvas.width/2, canvas.height/2 + 20)
+    ctx.fillText("Press Enter to Start", canvas.width/2, canvas.height/2 + 20)
     ctx.restore()
 
 }
@@ -215,7 +215,7 @@ gameStates[1] = function(){
     //code for displaying score
     ctx.save()
     ctx.font = "15px Arial"
-    ctx.fillStyle = "white"
+    ctx.fillStyle = "Blue"
     ctx.fillText("Score: " + score.toString(), canvas.width - 150, 30)
     ctx.restore()
 
@@ -276,25 +276,25 @@ gameStates[2] = function(){
         highScore = score
         ctx.save()
         ctx.font = "30px Arial"
-        ctx.fillStyle = "white"
+        ctx.fillStyle = "Blue"
         ctx.textAlign = "center"
         ctx.fillText("Game Over, your high score score was: " + score.toString() , canvas.width/2, canvas.height/2-60)
         ctx.fillText("Your new high score is: " + highScore.toString() , canvas.width/2, canvas.height/2-30)
         ctx.fillText("New Record", canvas.width/2, canvas.height/2)
         ctx.font = "15px Arial"
-        ctx.fillText("Press Space to Play Again", canvas.width/2, canvas.height/2 + 20)
+        ctx.fillText("Press Enter to Play Again", canvas.width/2, canvas.height/2 + 20)
         ctx.restore()
 
     }else{
         //keep same score new high score
         ctx.save()
         ctx.font = "30px Arial"
-        ctx.fillStyle = "white"
+        ctx.fillStyle = "Blue"
         ctx.textAlign = "center"
         ctx.fillText("Game Over, your score was: " + score.toString() , canvas.width/2, canvas.height/2-60)
         ctx.fillText("Your high score is: " + highScore.toString() , canvas.width/2, canvas.height/2-30)
         ctx.font = "15px Arial"
-        ctx.fillText("Press Space to Play Again", canvas.width/2, canvas.height/2 + 20)
+        ctx.fillText("Press Enter to Play Again", canvas.width/2, canvas.height/2 + 20)
         ctx.restore()
     }
     

@@ -135,7 +135,7 @@ function PlayerShip(){
 
     this.drawShip = function(){
        ctx.save()
-        ctx.translate(this.y, this.x)//postion
+        ctx.translate(this.x, this.y)
         if(this.up || this.left || this.right){
             ctx.save()
             //Changes the drawing values to animate the flame
@@ -201,7 +201,7 @@ function PlayerShip(){
 gameStates[0] = function(){
     ctx.save()
     ctx.font = "30px Arial"
-    ctx.fillStyle = "Blue"
+    ctx.fillStyle = "white"
     ctx.textAlign = "center"
     ctx.fillText("Asteroid Avoider", canvas.width/2, canvas.height/2-30)
     ctx.font = "15px Arial"
@@ -215,7 +215,7 @@ gameStates[1] = function(){
     //code for displaying score
     ctx.save()
     ctx.font = "15px Arial"
-    ctx.fillStyle = "Blue"
+    ctx.fillStyle = "white"
     ctx.fillText("Score: " + score.toString(), canvas.width - 150, 30)
     ctx.restore()
 
@@ -276,7 +276,7 @@ gameStates[2] = function(){
         highScore = score
         ctx.save()
         ctx.font = "30px Arial"
-        ctx.fillStyle = "Blue"
+        ctx.fillStyle = "white"
         ctx.textAlign = "center"
         ctx.fillText("Game Over, your high score score was: " + score.toString() , canvas.width/2, canvas.height/2-60)
         ctx.fillText("Your new high score is: " + highScore.toString() , canvas.width/2, canvas.height/2-30)
@@ -289,7 +289,7 @@ gameStates[2] = function(){
         //keep same score new high score
         ctx.save()
         ctx.font = "30px Arial"
-        ctx.fillStyle = "Blue"
+        ctx.fillStyle = "white"
         ctx.textAlign = "center"
         ctx.fillText("Game Over, your score was: " + score.toString() , canvas.width/2, canvas.height/2-60)
         ctx.fillText("Your high score is: " + highScore.toString() , canvas.width/2, canvas.height/2-30)

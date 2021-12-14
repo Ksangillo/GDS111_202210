@@ -33,7 +33,7 @@ function Asteroid(){
     this.x = randomRange(canvas.width - this.radius, this.radius)
     this.y = randomRange(canvas.height - this.radius, this.radius) - canvas.height
     this.vy = randomRange(10, 5)
-    this.color = "white"
+    this.color = "red"
 
     this.drawAsteroid = function(){
         ctx.save()
@@ -167,6 +167,7 @@ function PlayerShip(){
         ctx.closePath()
         ctx.fill();
         ctx.restore()
+        var imageObj = new Image()
 
         
     }
@@ -204,7 +205,7 @@ function PlayerShip(){
 gameStates[0] = function(){
     ctx.save()
     ctx.font = "30px Arial"
-    ctx.fillStyle = "white"
+    ctx.fillStyle = "purple"
     ctx.textAlign = "center"
     ctx.fillText("Asteroid Avoider", canvas.width/2, canvas.height/2-30)
     ctx.font = "15px Arial"
@@ -279,7 +280,7 @@ gameStates[2] = function(){
         highScore = score
         ctx.save()
         ctx.font = "30px Arial"
-        ctx.fillStyle = "white"
+        ctx.fillStyle = "purple"
         ctx.textAlign = "center"
         ctx.fillText("Game Over, your high score score was: " + score.toString() , canvas.width/2, canvas.height/2-60)
         ctx.fillText("Your new high score is: " + highScore.toString() , canvas.width/2, canvas.height/2-30)
@@ -292,7 +293,7 @@ gameStates[2] = function(){
         //keep same score new high score
         ctx.save()
         ctx.font = "30px Arial"
-        ctx.fillStyle = "white"
+        ctx.fillStyle = "purple"
         ctx.textAlign = "center"
         ctx.fillText("Game Over, your score was: " + score.toString() , canvas.width/2, canvas.height/2-60)
         ctx.fillText("Your high score is: " + highScore.toString() , canvas.width/2, canvas.height/2-30)

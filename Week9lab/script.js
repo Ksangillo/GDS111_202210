@@ -19,7 +19,7 @@ function randomRange(high, low){
 
 //Class for the Asteroids
 function Asteroid(){
-    asteroids.src ="image/asteroid.png"
+    
     this.radius = randomRange(10,2);
     this.x = randomRange(c.width - this.radius, 0 + this.radius);
     this.y = randomRange(c.height - this.radius, 0 + this.radius) - c.height;

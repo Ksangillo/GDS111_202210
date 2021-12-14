@@ -9,6 +9,24 @@ var gameStates = []
 var currentState = 0
 var score = 0
 var highScore = 0
+var invincible
+var powerup
+
+//----------------------------------------Image Sprites For Game---------------------------------------------------------//
+var shipSprite = new Image()
+shipSprite.src ="images/spaceship.png"
+shipSprite.onload = function(){
+
+
+}
+//FOR ATSEROID IMAGES____ belongs in astroid draw in the asteroid
+var asteroidSprite = new Image()
+asteroidSprite.src = "images/asteroid.png"
+asteroidSprite.onload = function(){
+
+
+}
+
 
 
 //utility functions
@@ -29,20 +47,24 @@ function gameStart(){
 
 //Constructor Function for Asteroid Class
 function Asteroid(){
-    this.radius = randomRange(15,2)
-    this.x = randomRange(canvas.width - this.radius, this.radius)
-    this.y = randomRange(canvas.height - this.radius, this.radius) - canvas.height
+    this.radius = randomRange(10,2)
+    this.x = randomRange(canvas.width - this.radius, this.radius) + canvas.width
+    this.y = randomRange(canvas.height - this.radius, this.radius) 
+    this.vx =randomRange(-5,-10)
     this.vy = randomRange(10, 5)
-    this.color = "red"
+    //this.color = "red"
 
     this.drawAsteroid = function(){
         ctx.save()
         ctx.beginPath()
         ctx.fillStyle = this.color
-        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true)
+        
+        ctx.drawImage(asteroidSprite, this.x- this.radius, this.y - this.radius, this.radius*2,this.radius*2)
+        console.log("astroidSprite drawImage()")
         ctx.closePath()
         ctx.fill()
         ctx.restore()
+        
 
     }
 
@@ -140,34 +162,42 @@ function PlayerShip(){
         if(this.up || this.left || this.right){
             ctx.save()
             //Changes the drawing values to animate the flame
-            if(this.flamelength == 30){
+            if(this.flamelength == 10){
                 this.flamelength = 20
                 ctx.fillStyle = "yellow"
             }else{
                 
-                this.flamelength = 30
+                this.flamelength = 10
                 ctx.fillStyle = "orange"
             }
             ctx.beginPath()
             ctx.moveTo(0, this.flamelength)
-            ctx.lineTo(5,5)
-            ctx.lineTo(-5,5)
+            ctx.lineTo(-30, 4)
+            ctx.lineTo(-2, 0)
             ctx.lineTo(0,this.flamelength)
             ctx.closePath()
             ctx.fill()
             ctx.restore()
 
         }
-        ctx.fillStyle = "red"
-        ctx.beginPath()
-        ctx.moveTo(0, -10)
-        ctx.lineTo(10, 10)
-        ctx.lineTo(-10, 10)
-        ctx.lineTo(0, -10)
-        ctx.closePath()
-        ctx.fill();
+        //----------------------------------------------------
+        //ctx.fillStyle = "red"
+        //ctx.beginPath()
+        //ctx.moveTo(0, -10)
+        //ctx.lineTo(10, 10)
+        //ctx.lineTo(-10, 10)
+        //ctx.lineTo(0, -10)
+        //ctx.closePath()
+        //ctx.fill();
+        //ctx.restore()
+        //---------------------------------------------------
+        ctx.drawImage(shipSprite, -20, -20, 50, 50)
+        console.log("shipSprite drawImage()")
+
+        //---If invincible ---- do somthing
         ctx.restore()
-        var imageObj = new Image()
+        
+       
 
         
     }
@@ -204,11 +234,11 @@ function PlayerShip(){
 //Main Screen
 gameStates[0] = function(){
     ctx.save()
-    ctx.font = "30px Arial"
-    ctx.fillStyle = "purple"
+    ctx.font = "30px Audiowide"
+    ctx.fillStyle = "red"
     ctx.textAlign = "center"
     ctx.fillText("Asteroid Avoider", canvas.width/2, canvas.height/2-30)
-    ctx.font = "15px Arial"
+    ctx.font = "15px Audiowide"
     ctx.fillText("Press Enter to Start", canvas.width/2, canvas.height/2 + 20)
     ctx.restore()
 
@@ -218,25 +248,25 @@ gameStates[0] = function(){
 gameStates[1] = function(){
     //code for displaying score
     ctx.save()
-    ctx.font = "15px Arial"
-    ctx.fillStyle = "white"
+    ctx.font = "15px Audiowide"
+    ctx.fillStyle = "red"
     ctx.fillText("Score: " + score.toString(), canvas.width - 150, 30)
     ctx.restore()
 
     //Vertical 
     if(ship.up){
-        ship.vy = -10
+        ship.vx = 10
     }else{
-        ship.vy = 3
+        ship.vx = -3
     }
     
     //Horizontal Movement
     if(ship.left){
-        ship.vx = -3
+        ship.vy = -3
     }else if(ship.right){
-        ship.vx = 3
+        ship.vy = 3
     }else{
-        ship.vx = 0
+        ship.vy = 0
     }
 
     //Loops through all asteroids and can check their position
@@ -255,11 +285,11 @@ gameStates[1] = function(){
 
 
         if(asteroids[i].y > canvas.height + asteroids[i].radius){
-            asteroids[i].x = randomRange(canvas.width - asteroids[i].radius, asteroids[i].radius)
-            asteroids[i].y = randomRange(canvas.height - asteroids[i].radius, asteroids[i].radius) -  canvas.height
+            asteroids[i].y = randomRange(canvas.height - asteroids[i].radius, asteroids[i].radius) 
+            asteroids[i].x = randomRange(canvas.height - asteroids[i].radius, asteroids[i].radius) - canvas.height
         }
-        if(!gameOver){
-            asteroids[i].y += asteroids[i].vy
+        if(!gameOver ==true ){
+            asteroids[i].x += asteroids[i].vx
             asteroids[i].drawAsteroid()
         }
     }
@@ -279,25 +309,25 @@ gameStates[2] = function(){
         //set a new high score
         highScore = score
         ctx.save()
-        ctx.font = "30px Arial"
-        ctx.fillStyle = "purple"
+        ctx.font = "30px Audiowide"
+        ctx.fillStyle = "red"
         ctx.textAlign = "center"
         ctx.fillText("Game Over, your high score score was: " + score.toString() , canvas.width/2, canvas.height/2-60)
         ctx.fillText("Your new high score is: " + highScore.toString() , canvas.width/2, canvas.height/2-30)
         ctx.fillText("New Record", canvas.width/2, canvas.height/2)
-        ctx.font = "15px Arial"
+        ctx.font = "15px Audiowide"
         ctx.fillText("Press Enter to Play Again", canvas.width/2, canvas.height/2 + 20)
         ctx.restore()
 
     }else{
         //keep same score new high score
         ctx.save()
-        ctx.font = "30px Arial"
-        ctx.fillStyle = "purple"
+        ctx.font = "30px Audiowide"
+        ctx.fillStyle = "Red"
         ctx.textAlign = "center"
         ctx.fillText("Game Over, your score was: " + score.toString() , canvas.width/2, canvas.height/2-60)
         ctx.fillText("Your high score is: " + highScore.toString() , canvas.width/2, canvas.height/2-30)
-        ctx.font = "15px Arial"
+        ctx.font = "20px Audiowide"
         ctx.fillText("Press Enter to Play Again", canvas.width/2, canvas.height/2 + 20)
         ctx.restore()
     }
@@ -328,8 +358,8 @@ function scoreTimer(){
         score++
         //using modulus  that returns remainder of a decimal
         //checks to see if remainder is divisble by 5
-        if(score % 5 == 0){
-            numAsteroids += 5
+        if(score % 2 == 0){
+            numAsteroids += 15
             console.log(numAsteroids)
         }
 

@@ -1,0 +1,32 @@
+body{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    background-image: url(images/BodyBackground.jpg);
+
+
+}
+
+#container{
+    border: 5px solid rgb(89, 10, 218);
+    background-color: black;
+    
+}
+h1{
+
+    font-family:Arial;
+    text-align: center;
+    color: white;
+
+
+}
+
+#footer{
+
+text-align: center;
+font-family:Arial;
+color:white
+
+
+
+}

@@ -12,12 +12,14 @@ var ship;
 
 
 
+
 function randomRange(high, low){
     return Math.random() * (high-low) + low;
 }
 
 //Class for the Asteroids
 function Asteroid(){
+    asteroids.src ="image/asteroid.png"
     this.radius = randomRange(10,2);
     this.x = randomRange(c.width - this.radius, 0 + this.radius);
     this.y = randomRange(c.height - this.radius, 0 + this.radius) - c.height;
@@ -43,6 +45,7 @@ function gameStart() {
     }
     //create the instance of the ship for the game
     ship = new PlayerShip();
+  
 }
 
 //Class for the player ship
@@ -82,17 +85,22 @@ function PlayerShip(){
             context.fill();
             context.restore();
         }
-        context.beginPath();
+       
+       
         
-        context.fillStyle = "red";
-        context.moveTo(0, -13);
-        context.lineTo(10, 10);
-        context.lineTo(-10, 10);
-        context.lineTo(0, -13);
-        context.closePath();
-        context.fill();
+    
+        context.beginPath();
+       context.fillStyle = "red";
+       context.moveTo(0, -13);
+       context.lineTo(10, 10);
+       context.lineTo(-10, 10);
+      context.lineTo(0, -13);
+       context.closePath();
+       context.fill();
 
-        context.restore();
+       context.restore();
+    
+
     }
 
     this.move = function(){

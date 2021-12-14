@@ -24,6 +24,7 @@ function gameStart(){
 
     //Create an instance of the PlayerShip
     ship = new PlayerShip()
+
 }
 
 //Constructor Function for Asteroid Class
@@ -38,7 +39,7 @@ function Asteroid(){
         ctx.save()
         ctx.beginPath()
         ctx.fillStyle = this.color
-        ctx.arc(this.y, this.x, this.radius, 0, 2 * Math.PI, true)
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true)
         ctx.closePath()
         ctx.fill()
         ctx.restore()
@@ -165,7 +166,9 @@ function PlayerShip(){
         ctx.lineTo(0, -10)
         ctx.closePath()
         ctx.fill();
-        ctx.restore() 
+        ctx.restore()
+
+        
     }
 
     this.move = function(){

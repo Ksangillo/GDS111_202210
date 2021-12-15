@@ -1,6 +1,6 @@
 body{
     display: flex;
-    justify-content: center;
+    justify-content:center;
     background-image: url(images/BodyBackground.jpg);
     font-family: 'Audiowide';
 
@@ -9,11 +9,8 @@ body{
 
 #container{
     border: 5px solid rgb(89, 10, 218);
-    background-image: url(images/Background.gif);
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y:center;
-    background-size:cover;
+    background-color:black;
+    
   
     font-family: "Audiowide";
     width:980px;
@@ -48,6 +45,11 @@ background-color: black;
 
 canvas{
     margin-left:85px;
+    background-image: url(images/Background.gif);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y:center;
+    background-size:cover;
 
 
 }

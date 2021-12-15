@@ -11,6 +11,13 @@ var score = 0
 var highScore = 0
 var invincible
 var powerup
+//For Game Menu--------------------------
+var menuSprite = new Image()
+menuSprite.src ="images/Menu.png"
+menuSprite.onload = function() {
+    
+
+}
 
 //----------------------------------------Image Sprites For Game---------------------------------------------------------//
 var shipSprite = new Image()
@@ -26,13 +33,7 @@ asteroidSprite.onload = function(){
 
 
 }
-   //For Game Menu--------------------------
-   var menuSprite = new Image()
-   menuSprite.src ="images/Menu.png"
-   menuSprite.onload = function() {
    
-   
-   }
    //For Endscreen-------------------------
    var endSprite = new Image()
    endSprite.src ="images/endscreen.jpeg"
@@ -54,6 +55,7 @@ function gameStart(){
     //For Loop to create the instances of Asteroids
     for(var i = 0; i < numAsteroids; i++){
         asteroids[i] = new Asteroid()
+        
     }
 
     //Create an instance of the PlayerShip
@@ -63,7 +65,7 @@ function gameStart(){
 
 //Constructor Function for Asteroid Class
 function Asteroid(){
-    this.radius = randomRange(10,2)
+    this.radius = randomRange(5,12)
     this.x = randomRange(canvas.width - this.radius, this.radius) + canvas.width
     this.y = randomRange(canvas.height - this.radius, this.radius) 
     this.vx =randomRange(-5,-10)
@@ -223,35 +225,36 @@ function PlayerShip(){
         this.y += this.vy
 
         //bottom boundary of screen
-        if(this.y > canvas.height - this.h/2){
-            this.y = canvas.height - this.h/2
+        if(this.y > canvas.height - this.h){
+            this.y = canvas.height - this.h
             this.vy = 0
         }
         //top boundary of screen
-        if(this.y < this.h/2){
-            this.y = this.h/2
+        if(this.y < this.h){
+            this.y = this.h
             this.vy = 0
         }
 
         //right boundary of screen
-        if(this.x > canvas.width - this.w/2){
-            this.x = canvas.width - this.w/2
+        if(this.x > canvas.width - this.w){
+            this.x = canvas.width - this.w
             this.vx = 0
         }
         //left boundary of screen
-        if(this.x < this.w/2){
-            this.x = this.w/2
+        if(this.x < this.w){
+            this.x = this.w
             this.vx = 0
         }
     }
       
 }
+    
 
 //Main Screen
 gameStates[0] = function(){
 
     ctx.save()
-    ctx.drawImage(menuSprite, -20, -10, 900, 600)
+    ctx.drawImage(menuSprite, -25, -28, 900, 900)
     console.log("menu drawImage()")
     ctx.restore()
     ctx.save()
@@ -262,11 +265,13 @@ gameStates[0] = function(){
     ctx.font = "15px Audiowide"
     ctx.fillText("Press Enter to Start", canvas.width/2, canvas.height/2 + 20)
     ctx.restore()
+    
 
 }
 
 //Game Screen
 gameStates[1] = function(){
+
     //code for displaying score
     ctx.save()
     ctx.font = "15px Audiowide"
@@ -328,7 +333,7 @@ gameStates[1] = function(){
 gameStates[2] = function(){
     if(score > highScore){
         ctx.save()
-        ctx.drawImage(endSprite, -20, -10, 900, 600)
+        ctx.drawImage(endSprite, -25, -20, 900, 900)
         console.log("endscreen drawImage()")
         ctx.restore()
         //set a new high score
@@ -347,7 +352,7 @@ gameStates[2] = function(){
     }else{
         //keep same score new high score
         ctx.save()
-        ctx.drawImage(endSprite, -20, -10, 900, 600)
+        ctx.drawImage(endSprite, -25, -20, 900, 900)
         console.log("endscreen drawImage()")
         ctx.restore()
         ctx.save()
@@ -387,7 +392,7 @@ function scoreTimer(){
         score++
         //using modulus  that returns remainder of a decimal
         //checks to see if remainder is divisble by 5
-        if(score % 5 == 0){
+        if(score % 2 == 0){
             numAsteroids += 5
             console.log(numAsteroids)
         }

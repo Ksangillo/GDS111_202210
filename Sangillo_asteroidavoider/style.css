@@ -14,26 +14,40 @@ body{
     background-position-x: center;
     background-position-y:center;
     background-size:cover;
-    margin-top:100px;
+  
     font-family: "Audiowide";
+    width:980px;
+    margin:auto;
+    padding:10px;
+    
     
 }
-h1{
+header, footer {
 
-    font-family:"Audiowide";
-    text-align: center;
-    color: Red;
-    background-color:black;
-    
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:10px;
+    text-align:center;
+    background-color:red;
+    border:1px purple;
+}
 
-
+header{
+    font-size: 48px;
 }
 
 #footer{
 
 text-align: center;
 font-family:"Audiowide";
+font-size: 48px;
 color:white;
 background-color: black;
+
+}
+
+canvas{
+    margin-left:85px;
+
 
 }

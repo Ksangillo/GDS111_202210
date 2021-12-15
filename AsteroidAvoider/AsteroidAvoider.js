@@ -19,13 +19,29 @@ shipSprite.onload = function(){
 
 
 }
-//FOR ATSEROID IMAGES____ belongs in astroid draw in the asteroid
+//FOR ASTEROID IMAGES____ belongs in astroid draw in the asteroid
 var asteroidSprite = new Image()
 asteroidSprite.src = "images/asteroid.png"
 asteroidSprite.onload = function(){
 
 
 }
+   //For Game Menu--------------------------
+   var menuSprite = new Image()
+   menuSprite.src ="images/Menu.png"
+   menuSprite.onload = function() {
+   
+   
+   }
+   //For Endscreen-------------------------
+   var endSprite = new Image()
+   endSprite.src ="images/endscreen.jpeg"
+   endSprite.onload = function() {
+   
+   
+   }
+
+
 
 
 
@@ -233,6 +249,11 @@ function PlayerShip(){
 
 //Main Screen
 gameStates[0] = function(){
+
+    ctx.save()
+    ctx.drawImage(menuSprite, -20, -10, 900, 600)
+    console.log("menu drawImage()")
+    ctx.restore()
     ctx.save()
     ctx.font = "30px Audiowide"
     ctx.fillStyle = "red"
@@ -306,6 +327,10 @@ gameStates[1] = function(){
 //Game Over
 gameStates[2] = function(){
     if(score > highScore){
+        ctx.save()
+        ctx.drawImage(endSprite, -20, -10, 900, 600)
+        console.log("endscreen drawImage()")
+        ctx.restore()
         //set a new high score
         highScore = score
         ctx.save()
@@ -321,6 +346,10 @@ gameStates[2] = function(){
 
     }else{
         //keep same score new high score
+        ctx.save()
+        ctx.drawImage(endSprite, -20, -10, 900, 600)
+        console.log("endscreen drawImage()")
+        ctx.restore()
         ctx.save()
         ctx.font = "30px Audiowide"
         ctx.fillStyle = "Red"
@@ -358,8 +387,8 @@ function scoreTimer(){
         score++
         //using modulus  that returns remainder of a decimal
         //checks to see if remainder is divisble by 5
-        if(score % 2 == 0){
-            numAsteroids += 15
+        if(score % 5 == 0){
+            numAsteroids += 5
             console.log(numAsteroids)
         }
 

@@ -10,8 +10,6 @@ body{
 #container{
     border: 5px solid rgb(89, 10, 218);
     background-color:black;
-    
-  
     font-family: "Audiowide";
     width:980px;
     margin:auto;
@@ -45,7 +43,8 @@ background-color: black;
 
 canvas{
     margin-left:85px;
-    background-image: url(images/Background.gif);
+    font-family: "Audiowide";
+    background-image: url(images/Menu.png);
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y:center;

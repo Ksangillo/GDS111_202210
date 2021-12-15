@@ -41,6 +41,13 @@ asteroidSprite.onload = function(){
    
    
    }
+   var screenSprite = new Image()
+   screenSprite.src ="images/gamescreen.jpg"
+   screenSprite.onload = function() {
+   
+   
+   }
+
 
 
 
@@ -252,7 +259,6 @@ function PlayerShip(){
 
 //Main Screen
 gameStates[0] = function(){
-
     ctx.save()
     ctx.drawImage(menuSprite, -25, -28, 900, 900)
     console.log("menu drawImage()")
@@ -271,6 +277,10 @@ gameStates[0] = function(){
 
 //Game Screen
 gameStates[1] = function(){
+    ctx.save()
+    ctx.drawImage(screenSprite, -25, -28, 800, 700)
+    console.log("screen drawImage()")
+    ctx.restore()
 
     //code for displaying score
     ctx.save()

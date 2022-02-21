@@ -14,10 +14,10 @@ wiz.force=1
 var sky = new GameObject({width:canvas.width, height:canvas.height, color:"cyan"})
 
 //The ground
-var ground = new GameObject({width:canvas.width*10, height:64,y:canvas.height-32, color:"green"})
+var ground = new GameObject({width:canvas.width*10, height:64,y:canvas.height-32, color:"sand"})
 
 //A platform
-var plat = new GameObject({width:256, height:64,y:canvas.height-200, color:"green"})
+var plat = new GameObject({width:256, height:64,y:canvas.height-200, color:"brown"})
 
 //A level object when it is moved other objects move with it.
 var level = new GameObject({x:0,y:0});
@@ -58,15 +58,15 @@ var levelItems=new Group();
 levelItems.add([caveBack.grid, ground, plat, cave.grid]);
 
 //background
-var bg = new GameObject({x:level.x,y:level.y, width:canvas.width*4, height:canvas.height})
-bg.img.src=`images/bgfull.png`
+var bg = new GameObject({x:level.x,y:level.y, width:canvas.width/4, height:canvas.height})
+bg.img.src=`images/bgba.png`
 
 var clouds = new GameObject({x:level.x,y:level.y})
-clouds.img.src=`images/mrt.jpg`
+clouds.img.src=`images/bgfo.jpg`
 
 //farbackground
 var rbg = new GameObject({x:level.x, y:level.y, width:1024, height:512})
-rbg.img.src=`images/hills.png`
+rbg.img.src=`images/bgb.png`
 
 /*------------------vvBULLET STUFFvv----------------------*/
 

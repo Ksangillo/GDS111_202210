@@ -224,7 +224,7 @@ function GameObject(obj)
 	{
 		context.save();
 			context.fillStyle = this.color;
-			context.translate(this.x + this.world.x, this.y + this.world.y);
+			context.translate(this.x + this.world.x, this.y + this.world.y);//move canvas from top left to center
 			context.rotate(this.angle * Math.PI/180);
 			context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
 		context.restore();

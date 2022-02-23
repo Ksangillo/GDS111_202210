@@ -249,6 +249,11 @@ gameStates[`level1`] = function()
 	var pattern = context.createPattern(clouds.img, `repeat`);
 	ground.color = pattern
 
+	//var platform = context.createPattern(plat.img, `repeat`);
+	//plat.img.src="image/bgfo.jpg";
+
+	
+
 	rbg.drawStaticImage([0,0]);
 	rbg.drawStaticImage([-rbg.width,0]);
 	rbg.drawStaticImage([rbg.width,0]);

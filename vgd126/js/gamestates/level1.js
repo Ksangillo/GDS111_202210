@@ -17,7 +17,7 @@ var sky = new GameObject({width:canvas.width, height:canvas.height, color:"cyan"
 var ground = new GameObject({width:canvas.width*10, height:64,y:canvas.height-32, color:"sand"})
 
 //A platform
-var plat = new GameObject({width:256, height:64,y:canvas.height-200, color:"brown"})
+var plat = new GameObject({width:256, height:64,y:canvas.height-200, color:"brown" })
 
 //A level object when it is moved other objects move with it.
 var level = new GameObject({x:0,y:0});
@@ -58,7 +58,7 @@ var levelItems=new Group();
 levelItems.add([caveBack.grid, ground, plat, cave.grid]);
 
 //background
-var bg = new GameObject({x:level.x,y:level.y, width:canvas.width/4, height:canvas.height})
+var bg = new GameObject({x:level.x,y:level.y, width:canvas.width, height:canvas.height})
 bg.img.src=`images/bgba.png`
 
 var clouds = new GameObject({x:level.x,y:level.y})
@@ -66,7 +66,7 @@ clouds.img.src=`images/bgfo.jpg`
 
 //farbackground
 var rbg = new GameObject({x:level.x, y:level.y, width:1024, height:512})
-rbg.img.src=`images/bgb.png`
+rbg.img.src=`images/bgfb.png`
 
 /*------------------vvBULLET STUFFvv----------------------*/
 
@@ -249,8 +249,10 @@ gameStates[`level1`] = function()
 	var pattern = context.createPattern(clouds.img, `repeat`);
 	ground.color = pattern
 
-	//var platform = context.createPattern(plat.img, `repeat`);
-	//plat.img.src="image/bgfo.jpg";
+	plat.render()//
+	var pf=context.createPattern(plat.img, 'repeat')
+	plat.color=pattern
+	plat.img.src= `images/bgfo.jpg`;//draws image on platform
 
 	
 

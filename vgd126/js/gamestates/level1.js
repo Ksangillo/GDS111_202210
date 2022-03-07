@@ -11,7 +11,7 @@ var wiz = new GameObject({width:128, height:178, spriteData:playerData}).makeSpr
 wiz.force=1
 
 //Very back background
-var sky = new GameObject({width:canvas.width, height:canvas.height, color:"cyan"})
+var sky = new GameObject({width:canvas.width, height:canvas.height, color:"white"})
 
 //The ground
 var ground = new GameObject({width:canvas.width*10, height:64,y:canvas.height-32, color:"sand"})
@@ -79,7 +79,7 @@ var currentBullet = 0;
 for(let i=0; i<100; i++)
 {
 	bullets[i] = new GameObject({width:64, height:64})
-	//bullets[i].img.src="images/mrt.jpg"
+	bullets[i].img.src="images/fireball.png"
 	bullets[i].makeSprite(playerData)
 	bullets[i].y=-10000
 	bullets[i].changeState(`walk`)
@@ -138,7 +138,7 @@ gameStates[`level1`] = function()
 		wiz.canJump = false;
 		wiz.vy = wiz.jumpHeight;
 		wiz.changeState(`jump`)
-		//sounds.play(`splode`,1)
+		sounds.play(`jump`,.1)
 	}
 	shotTimer--;
 	if(shotTimer <=0)
@@ -164,12 +164,12 @@ gameStates[`level1`] = function()
 			bullets[currentBullet].y = wiz.y + 20;
 			bullets[currentBullet].dir = wiz.dir;
 			
-			//sounds.play(`splode`,1)
+			sounds.play(`shoot`,.1)
 
 			currentBullet++;
 			if(currentBullet>=bullets.length)
 			{
-				currentBullet=0
+				currentBullet=1
 			}
 
 		}
@@ -280,7 +280,7 @@ gameStates[`level1`] = function()
 		if(bullets[i].overlap(stage)) bullets[i].vy+=1;
 		bullets[i].move()
 		bullets[i].play(function(){return}).drawSprite()
-		//bullets[i].angle+=10
+		bullets[i].angle+=10//rolls the projectile
 		while(g1.collide(bullets[i].bottom) && bullets[i].vy>=0)
 		{
 			

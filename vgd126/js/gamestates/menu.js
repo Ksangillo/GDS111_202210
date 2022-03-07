@@ -11,7 +11,7 @@ menuBackground.width=canvas.width
 menuBackground.height=canvas.height
 
 gameStates[`menu`] =function(){
-
+	
 	//Makes the button clickable
 	if(startButton.overlap(mouse))
 	{

@@ -14,6 +14,7 @@ class SoundManager
             this[_sound].currentTime=_start
             this[_sound].loop = _loop
             this[_sound].play();
+            
         }
         catch
         {
@@ -21,13 +22,14 @@ class SoundManager
         }
     }
 }
+
 let soundNodes=document.querySelectorAll(`audio`)
 if(soundNodes.length>0) var sounds=new SoundManager(soundNodes)
 soundNodes=null
 
 
 
+document.addEventListener('click', ()=>sounds.play(`bg`))
 
 
 
-//document.addEventListener(`click`, ()=>  sounds.play(`splode`,.5))

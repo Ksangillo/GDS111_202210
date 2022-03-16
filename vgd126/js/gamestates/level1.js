@@ -11,7 +11,8 @@ var wiz = new GameObject({width:128, height:178, spriteData:playerData}).makeSpr
 wiz.force=1
 
 //Very back background
-var sky = new GameObject({width:canvas.width, height:canvas.height, color:"white"})
+var sky = new GameObject({width:canvas.width, height:canvas.height})
+sky.img.src=`images/sky.png`
 
 //The ground
 var ground = new GameObject({width:canvas.width*10, height:64,y:canvas.height-32, color:"sand"})
@@ -244,7 +245,7 @@ gameStates[`level1`] = function()
 		rbg.x=0; 
 	}
 
-	sky.render()
+	sky.drawStaticImage()
 	
 	var pattern = context.createPattern(clouds.img, `repeat`);
 	ground.color = pattern

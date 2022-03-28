@@ -11,7 +11,7 @@ var ball;
 	ball = new Ball();
 	
 	//------Declare the Player's speed on the x and y axis------
-	ball.vx = 2;
+	ball.vx = 4;
 	ball.vy = 0;
 	//----------------------------------------------------
 	
@@ -27,17 +27,19 @@ function animate()
 	//---------------------------------------------------
 	
 	//--------------Bounce of Right----------------------
-	if(ball.x > canvas.width - ball.width/2)
+	if(ball.x > canvas.width - ball.width/2) 
 	{
-	
-		ball.vx = -ball.vx;	
+		ball.vx = -ball.vx;//reverses the direction
+		
+		
+	}
+	//-------------Bounce of Left-----------------------
+	else if(ball.x< 0 + ball.width/2)
+	{
+		ball.vx = -ball.vx;
 	}
 	
 	//---------------------------------------------------
-	if(ball.x > canvas.width + ball.width/2)
-	{
 	
-		ball.vx = ball.vx;	
-	}
 	ball.draw();
 }

@@ -12,7 +12,7 @@ var ball;
 	
 	//------Declare the Player's speed on the x and y axis------
 	ball.vx = 4;
-	ball.vy = 0;
+	ball.vy = 4;
 	//----------------------------------------------------
 	
 	timer = setInterval(animate, interval);
@@ -27,16 +27,27 @@ function animate()
 	//---------------------------------------------------
 	
 	//--------------Bounce of Right----------------------
-	if(ball.x > canvas.width - ball.width/2) 
+	if(ball.x > canvas.width - ball.width/2 ) 
 	{
 		ball.vx = -ball.vx;//reverses the direction
-		
+		ball.vy= -ball.vy;
 		
 	}
 	//-------------Bounce of Left-----------------------
-	else if(ball.x< 0 + ball.width/2)
+	else if(ball.x < 0 + ball.width/2 )
 	{
 		ball.vx = -ball.vx;
+		
+	}
+	else if (ball.y > canvas.height - ball.height/2)
+	{
+
+		ball.vy = -ball.vy
+	}
+	else if (ball.y < 0 + ball.height/2)
+	{
+
+		ball.vy = -ball.vy
 	}
 	
 	//---------------------------------------------------

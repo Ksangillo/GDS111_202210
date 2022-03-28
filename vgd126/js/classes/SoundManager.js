@@ -29,7 +29,7 @@ soundNodes=null
 
 
 
-document.addEventListener('click', ()=>sounds.play(`bg`))
+//document.addEventListener('click', ()=>sounds.play(`bg`))
 
 
 

@@ -11,7 +11,8 @@ var wiz = new GameObject({width:128, height:178, spriteData:playerData}).makeSpr
 wiz.force=1
 
 //Very back background
-var sky = new GameObject({width:canvas.width, height:canvas.height, color:"white"})
+var sky = new GameObject({width:canvas.width, height:canvas.height})
+sky.img.src=`images/sky.png`
 
 //The ground
 var ground = new GameObject({width:canvas.width*10, height:64,y:canvas.height-32, color:"sand"})
@@ -80,9 +81,8 @@ for(let i=0; i<100; i++)
 {
 	bullets[i] = new GameObject({width:64, height:64})
 	bullets[i].img.src="images/fireball.png"
-	bullets[i].makeSprite(playerData)
 	bullets[i].y=-10000
-	bullets[i].changeState(`walk`)
+	
 }
 
 //console.log(bullets)
@@ -98,6 +98,7 @@ for(let i=0; i<100; i++)
 
 gameStates[`level1`] = function()
 {
+	
 	
 	if(!keys[`W`] && !keys[`S`] && !keys[`D`] && !keys[`A`] && !keys[` `] && canShoot && wiz.canJump)
 	{
@@ -158,10 +159,10 @@ gameStates[`level1`] = function()
 			shotTimer = shotDelay
 			//console.log(`Boom`)
 
-			bullets[currentBullet].vx = 5*wiz.dir;
+			bullets[currentBullet].vx = 10*wiz.dir;//speed of the projectile
 			bullets[currentBullet].world = level;
 			bullets[currentBullet].x = wiz.x-level.x + (wiz.dir * 96) ;
-			bullets[currentBullet].y = wiz.y + 20;
+			bullets[currentBullet].y = wiz.y + 5;// bullet go ethier up or down
 			bullets[currentBullet].dir = wiz.dir;
 			
 			sounds.play(`shoot`,.1)
@@ -244,7 +245,7 @@ gameStates[`level1`] = function()
 		rbg.x=0; 
 	}
 
-	sky.render()
+	sky.drawStaticImage()
 	
 	var pattern = context.createPattern(clouds.img, `repeat`);
 	ground.color = pattern
@@ -277,9 +278,9 @@ gameStates[`level1`] = function()
 	
 	for(let i=0; i<bullets.length; i++)
 	{
-		if(bullets[i].overlap(stage)) bullets[i].vy+=1;
+		//if(bullets[i].overlap(stage)) bullets[i].vy+=1; //adds gravity to projeciles
 		bullets[i].move()
-		bullets[i].play(function(){return}).drawSprite()
+		bullets[i].drawStaticImage()
 		bullets[i].angle+=10//rolls the projectile
 		while(g1.collide(bullets[i].bottom) && bullets[i].vy>=0)
 		{
@@ -294,6 +295,5 @@ gameStates[`level1`] = function()
 
 
 	front.play().render(`drawSprite`);
-
-
+	
 }

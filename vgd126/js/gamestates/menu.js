@@ -2,7 +2,7 @@
 This file contains all of the code for the Main Menu
 ----------------------------------*/
 
-var startButton = new GameObject({width:128,height:27}).makeSprite(buttonData)//turns into a sprite for a animated spritesheet for menu
+var startButton = new GameObject({width:128,height:27,}).makeSprite(buttonData)//turns into a sprite for a animated spritesheet for menu
 
 
 var menuBackground = new GameObject();

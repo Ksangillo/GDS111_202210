@@ -29,9 +29,15 @@ function animate()
 	//--------------Bounce of Right----------------------
 	if(ball.x > canvas.width - ball.width/2)
 	{
+	
 		ball.vx = -ball.vx;	
 	}
-	//---------------------------------------------------
 	
+	//---------------------------------------------------
+	if(ball.x > canvas.width + ball.width/2)
+	{
+	
+		ball.vx = ball.vx;	
+	}
 	ball.draw();
 }

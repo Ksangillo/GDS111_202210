@@ -35,27 +35,27 @@ function animate()
 		ball.x = canvas.width - ball.width/2
 		ball.vx = -ball.vx;//reverses the direction
 		ball.vx= 1 + ball.vx;//ball increases speed x
-		
+		ball.color="red";//changes color cause of var ball
 		
 	}
 	//-------------Bounce of Left-----------------------
-	else if (ball.x < 0 + ball.width/2 )
+	 if (ball.x < 0 + ball.width/2 )
 	{
-		
+		ball.color="black";
 		ball.vx = -ball.vx;
 		ball.vx= 1 + ball.vx;//ball increases speed y
 		
 	}
-	else if (ball.y > canvas.height - ball.height/2)
+	if (ball.y > canvas.height - ball.height/2)
 	{
 
-		
+		ball.color="yellow";
 		ball.vy = -ball.vy
 		ball.vy= 1 + ball.vy;
 	}
-	else if (ball.y < 0 + ball.height/2)
+	 if (ball.y < 0 + ball.height/2)
 	{
-		
+		ball.color="cyan";
 		ball.vy = -ball.vy
 		ball.vy= 1 + ball.vy;
 	}

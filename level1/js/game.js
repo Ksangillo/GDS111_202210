@@ -32,14 +32,14 @@ function animate()
 	//--------------Bounce of Right----------------------
 	if(ball.x > canvas.width - ball.width/2 ) 
 	{
-		this. color = "red";
+		
 		ball.vx = -ball.vx;//reverses the direction
 		ball.vx= 1 + ball.vx;//ball increases speed x
 		
 		
 	}
 	//-------------Bounce of Left-----------------------
-	else if(ball.x < 0 + ball.width/2 )
+	else if (ball.x < 0 + ball.width/2 )
 	{
 		ball.vx = -ball.vx;
 		ball.vx= 1 + ball.vx;//ball increases speed y

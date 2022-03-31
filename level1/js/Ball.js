@@ -28,7 +28,7 @@ function Ball()
 		context.arc(0,0,this.width/2,0,360*Math.PI/180,true)
 		context.closePath();
 		context.fill();
-		context.restore();
+		context.restore();//restores original coordinates 0,0
 
 		
 	}	

@@ -32,7 +32,7 @@ function animate()
 	//--------------Bounce of Right----------------------
 	if(ball.x > canvas.width - ball.width/2 ) 
 	{
-		
+		ball.x = canvas.width - ball.width/2
 		ball.vx = -ball.vx;//reverses the direction
 		ball.vx= 1 + ball.vx;//ball increases speed x
 		
@@ -41,6 +41,7 @@ function animate()
 	//-------------Bounce of Left-----------------------
 	else if (ball.x < 0 + ball.width/2 )
 	{
+		
 		ball.vx = -ball.vx;
 		ball.vx= 1 + ball.vx;//ball increases speed y
 		
@@ -48,12 +49,13 @@ function animate()
 	else if (ball.y > canvas.height - ball.height/2)
 	{
 
+		
 		ball.vy = -ball.vy
-		ball.vy1= 1 + ball.vy;
+		ball.vy= 1 + ball.vy;
 	}
 	else if (ball.y < 0 + ball.height/2)
 	{
-
+		
 		ball.vy = -ball.vy
 		ball.vy= 1 + ball.vy;
 	}

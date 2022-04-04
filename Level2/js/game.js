@@ -19,14 +19,14 @@ function animate()
 {
 	context.clearRect(0,0,canvas.width, canvas.height);	
    
-	if(w)//if (d=true), (!d) means  d=false
+	if(s)//if (d=true), (!d) means  d=false
 	{
-		console.log("Moving Up");
+		
 		player1.y += 2;
 	}
-	if(s)
+	if(w)
 	{
-		console.log("Moving Down");
+		
 		player1.y += -2;
 	}
 	

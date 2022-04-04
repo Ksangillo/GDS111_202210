@@ -17,6 +17,7 @@ player1.width = 30;
 player1.height= 160;
 
 ball = new GameObject();
+ball.width= 50;
 ball.vx = 4;
 ball.vy = 0;
 
@@ -39,12 +40,12 @@ function animate()//
 	if(s)//if (d=true), (!s) means  d=false
 	{
 		
-		player1.y += 2;
+		player1.y += 4;
 	}
 	if(w)
 	{
 		
-		player1.y += -2;
+		player1.y += -4;
 	}
 
 	if(LTblock.hitTestObject(player1))//collision Left Top
@@ -82,23 +83,43 @@ function animate()//
 	ball.move();
 
 	//-----------Losing Condition------------------//
-	if(ball.x > canvas.width - ball.width/2)
+	
+
+
+	/*
+	
+	if(ball.x < canvas.width/2-ball,width/2)
 	{
+		
 		ball.x =  canvas.width/2 - ball.width/2;
 		ball.vx = -ball.vx;
 
 	}
-
-
 	if(ball.x < 0  + ball.width/2)
 	{
 		ball.x =  canvas.width/2 - ball.width/2;
 		ball.vx = -ball.vx;
 
 	}
+
+	*/
+
+     //ball hits top
+
+
+     if(ball.y < player1.y - player1.height/6 )
+     {
+		ball.vx = 4;
+        ball.vy = 4;
+	 }
+
+	
+
+	
+
 //----------------------------------------------------//
 	//--------------Bounce of Right----------------------
-	/*if(ball.x > canvas.width - ball.width/2 ) 
+	if(ball.x > canvas.width - ball.width/2 ) 
 	{
 		ball.x = canvas.width - ball.width/2
 		ball.vx = -ball.vx;//reverses the direction
@@ -106,6 +127,7 @@ function animate()//
 		ball.color="red";//changes color cause of var ball
 		
 	}
+	
 	//-------------Bounce of Left-----------------------
 	 if (ball.x < 0 + ball.width/2 )
 	{
@@ -114,21 +136,22 @@ function animate()//
 		ball.vx= 1 + ball.vx;//ball increases speed y
 		
 	}
+	
 	if (ball.y > canvas.height - ball.height/2)
 	{
 
 		ball.color="yellow";
-		ball.vy = -ball.vy
-		ball.vy= 1 + ball.vy;
+		ball.vy = -ball.vy;
+		
 	}
 	 if (ball.y < 0 + ball.height/2)
 	{
 		ball.color="cyan";
-		ball.vy = -ball.vy
-		ball.vy= 1 + ball.vy;
+		ball.vy = -ball.vy;
+		
 	}
 
-	*/
+	
 	//---------------------------------------------------
 	
 	ball.drawCircle();

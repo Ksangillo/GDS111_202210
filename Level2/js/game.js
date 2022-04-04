@@ -78,10 +78,27 @@ function animate()//
 
 
 	
-	//---------------------BALL---------------------------
+	//---------------------BALL-------------------------------//
 	ball.move();
+
+	//-----------Losing Condition------------------//
+	if(ball.x > canvas.width - ball.width/2)
+	{
+		ball.x =  canvas.width/2 - ball.width/2;
+		ball.vx = -ball.vx;
+
+	}
+
+
+	if(ball.x < 0  + ball.width/2)
+	{
+		ball.x =  canvas.width/2 - ball.width/2;
+		ball.vx = -ball.vx;
+
+	}
+//----------------------------------------------------//
 	//--------------Bounce of Right----------------------
-	if(ball.x > canvas.width - ball.width/2 ) 
+	/*if(ball.x > canvas.width - ball.width/2 ) 
 	{
 		ball.x = canvas.width - ball.width/2
 		ball.vx = -ball.vx;//reverses the direction
@@ -111,7 +128,7 @@ function animate()//
 		ball.vy= 1 + ball.vy;
 	}
 
-
+	*/
 	//---------------------------------------------------
 	
 	ball.drawCircle();

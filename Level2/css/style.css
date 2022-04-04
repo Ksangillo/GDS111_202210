@@ -1,3 +1,23 @@
-canvas{
-	border:1px solid black;
+html,body
+{
+margin: 0;
+height: 100%;
+
+}
+
+
+canvas
+{
+	border:20px solid rgb(8, 224, 240);
+	
+	
+}
+body
+{
+
+display: flex;
+justify-content: center;
+align-items:center;
+
+
 }

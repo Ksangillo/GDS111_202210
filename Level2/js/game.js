@@ -18,7 +18,7 @@ player1.height= 150;
 
 ball = new GameObject();
 ball.width= 50;
-ball.vx = 4;
+ball.vx = 6;
 ball.vy = 0;
 
 LTblock = new GameObject(canvas.width , canvas.height, 30, 50);
@@ -40,12 +40,12 @@ function animate()//
 	if(s)//if (d=true), (!s) means  d=false
 	{
 		
-		player1.y += 4;
+		player1.y += 5;
 	}
 	if(w)
 	{
 		
-		player1.y += -4;
+		player1.y += -5;
 	}
 
 	if(LTblock.hitTestObject(player1))//collision Left Top
@@ -70,8 +70,27 @@ function animate()//
 	if(ball.hitTestObject(player1))
 	{
 		ball.vx = -ball.vx;
-		ball.vx= 1 + ball.vx;
 		ball.color="purple";
+	}
+	if(ball.hitTestObject(player1))
+	{
+		//ball hits top
+		if(ball.y < player1.y - player1.height/6) //one sixth of the paddle's height)
+		{
+		ball.vx = 4;//positive speed;
+		ball.vy = -4; //negative speed;
+		ball.color="green";
+		}
+	}
+	if(ball.hitTestObject(player1))
+	{
+		//ball hits bottom
+		if(ball.y > player1.y - player1.height/3) //one sixth of the paddle's height)
+		{
+		ball.vx = 4;//positive speed;
+		ball.vy = 4; //negative speed;
+		ball.color="orange";
+		}
 	}
 
 	
@@ -135,13 +154,13 @@ function animate()//
 
 		ball.color="yellow";
 		ball.vy = -ball.vy;
-		
+		ball.vx= 1 + ball.vx;
 	}
 	 if (ball.y < 0 + ball.height/2)
 	{
 		ball.color="cyan";
 		ball.vy = -ball.vy;
-		
+		ball.vx= 1 + ball.vx;
 	}
 
 	

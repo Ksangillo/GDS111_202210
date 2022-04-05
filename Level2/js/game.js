@@ -67,11 +67,15 @@ function animate()//
 	{
 		prevY2 = player1.y ;
 	}
-	if(ball.hitTestObject(player1))
+
+	if(ball.hitTestObject(player1))//ball hit middle
 	{
-		ball.vx = -ball.vx;
-		ball.color="purple";
+		
+		ball.vx = -ball.vx+1;
+		player1.color="purple";
 	}
+	
+	
 	if(ball.hitTestObject(player1))
 	{
 		//ball hits top
@@ -79,19 +83,23 @@ function animate()//
 		{
 		ball.vx = 4;//positive speed;
 		ball.vy = -4; //negative speed;
-		ball.color="green";
+		player1.color="green";
 		}
 	}
-	if(ball.hitTestObject(player1))
+	if(ball.hitTestObject(player1))//ball hits bottom
 	{
-		//ball hits bottom
-		if(ball.y > player1.y - player1.height/3) //one sixth of the paddle's height)
+		//ball hits top
+		if(ball.y > player1.y ) //one sixth of the paddle's height)
 		{
 		ball.vx = 4;//positive speed;
 		ball.vy = 4; //negative speed;
-		ball.color="orange";
+		player1.color="orange";
 		}
 	}
+
+	
+	
+	
 
 	
 

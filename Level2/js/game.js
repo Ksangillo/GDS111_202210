@@ -14,7 +14,7 @@ canvas = document.getElementById("canvas");
 player1 = new GameObject();
 player1.x= 60;
 player1.width = 30;
-player1.height= 160;
+player1.height= 150;
 
 ball = new GameObject();
 ball.width= 50;
@@ -107,13 +107,6 @@ function animate()//
      //ball hits top
 
 
-     if(ball.y < player1.y - player1.height/6 )
-     {
-		ball.vx = 4;
-        ball.vy = 4;
-	 }
-
-	
 
 	
 

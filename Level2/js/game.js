@@ -8,7 +8,7 @@ var prevY2;
 var prevyX;
 
 canvas = document.getElementById("canvas");
-	context = canvas.getContext("2d");
+context = canvas.getContext("2d");
 
 //
 player1 = new GameObject();
@@ -133,7 +133,17 @@ function animate()//
 
      //ball hits top
 
+	 if(player1.y > canvas.height - player1.height/2)//better collision
+	 {
+		 player1.y = canvas.height - player1.height	/2
+	 }
 
+	 
+	 if(player1.y < 0 - player1.height/2)
+	 {
+		 player1.y = 0 +  player1.height/2
+	 }
+	
 
 	
 

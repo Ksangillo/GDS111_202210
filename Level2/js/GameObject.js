@@ -1,5 +1,5 @@
 // JavaScript Document
-function GameObject(x,y,w,h,color)
+function GameObject(x,y,w,h,color)//Bascially a blank character sheet or template
 {
 	
 	//Default Values

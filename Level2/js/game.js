@@ -36,8 +36,6 @@ timer = setInterval(animate, interval);
 function animate()//
 {
 	context.clearRect(0,0,canvas.width, canvas.height);	
-	context.font = "30px Georgia";
-	context.fillText("Player 1 | Player 2", 400, 30);
 
 	//------Calls Controls for game------------------//
 	
@@ -128,12 +126,32 @@ function animate()//
 	//---------------------BALL-------------------------------//
 	ball.move();
 
-	//--Displays score--------------//
+
+	//----Displays Net-------------//
+	context.save();
+	context.strokeStyle = "Yellow";
+	context.beginPath();
+	context.moveTo(canvas.width/2,0)
+	context.lineTo(canvas.width/2,800)
+	context.lineWidth = 5;
+	context.stroke();
+	context.restore();
+	///---------------------------//
+	
+	//----------Displays score--------------//
+	context.font = "30px Georgia";
+	context.fillText("Player 1 | Player 2", 396, 30);
+
+
 	context.save()
     context.font = "20px Georgia "
     context.fillStyle = "black"
-    context.fillText( p1Wins.toString()+"-" + p2Wins.toString(), 505, 60)
-    context.restore()
+    context.fillText( p1Wins.toString()+"-" + p2Wins.toString(),496, 60)
+    context.restore();
+	////---------------------------//
+
+
+	
 	
 	//-----------Losing Condition------------------//
 	if(ball.x > canvas.width - ball.width/2)//resets right

@@ -1,14 +1,16 @@
 
 var canvas;
-var context;
+var contex;
 var interval = 1000/60;
 var player1; 
 var player2;
-
+var p1Wins = 0;
+var p2Wins = 0;
 
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
+
 
 //--------Instinuated Objects-----------------------------------------------------//
 player1 = new GameObject();
@@ -27,38 +29,43 @@ ball.width= 50;
 ball.vx = 6;
 ball.vy = 0;
 
-//
+//------------------------------------------------------------------------------//
 
 
 timer = setInterval(animate, interval);
-
 function animate()//
 {
 	context.clearRect(0,0,canvas.width, canvas.height);	
+	context.font = "30px Georgia";
+	context.fillText("Player 1 | Player 2", 400, 30);
+
+	//------Calls Controls for game------------------//
 	
 	if(w)//if (d=true), (!s) means  d=false
 	{
 		
-		player1.y += -5;
+		player1.y += -6;
 	}
 	if(s)
 	{
 		
-		player1.y += 5;
+		player1.y += 6;
 	}
 	if(up)//if (d=true), (!s) means  d=false
 	{
 		
-		player2.y += -5;
+		player2.y += -6;
 	}
 	if(down)
 	{
 		
-		player2.y += 5;
+		player2.y += 6;
 	}
 
-	
+	//---------------------------------------------//
 
+
+	//-------Ball Collision with Paddle------------------------------------------------//
 	if(ball.hitTestObject(player1))//ball hit middle
 	{
 		
@@ -72,8 +79,8 @@ function animate()//
 		//ball hits top
 		if(ball.y < player1.y - player1.height/6) //one sixth of the paddle's height)
 		{
-		ball.vx = 4;//positive speed;
-		ball.vy = -4; //negative speed;
+		ball.vx = 6;//positive speed;
+		ball.vy = -6; //negative speed;
 		player1.color="green";
 		}
 	}
@@ -82,8 +89,8 @@ function animate()//
 		//ball hits top
 		if(ball.y > player1.y ) //one sixth of the paddle's height)
 		{
-		ball.vx = 4;//positive speed;
-		ball.vy = 4; //negative speed;
+		ball.vx = 6;//positive speed;
+		ball.vy = 6; //negative speed;
 		player1.color="orange";
 		}
 	}
@@ -100,8 +107,8 @@ function animate()//
 		//ball hits top
 		if(ball.y < player2.y - player2.height/6) //one sixth of the paddle's height)
 		{
-		ball.vx = -4;//positive speed;
-		ball.vy = -4; //negative speed;
+		ball.vx = -6;//positive speed;
+		ball.vy = -6; //negative speed;
 		player2.color="green";
 		}
 	}
@@ -110,41 +117,42 @@ function animate()//
 		//ball hits top
 		if(ball.y > player2.y ) //one sixth of the paddle's height)
 		{
-		ball.vx = -4;//positive speed;
-		ball.vy = 4; //negative speed;
+		ball.vx = -6;//positive speed;
+		ball.vy = 6; //negative speed;
 		player2.color="orange";
 		}
 	}
-	
+	//-------------------------------------------------------------------------------------//
+
+
 	//---------------------BALL-------------------------------//
-		ball.move();
+	ball.move();
+
+	//--Displays score--------------//
+	context.save()
+    context.font = "20px Georgia "
+    context.fillStyle = "black"
+    context.fillText( p1Wins.toString()+"-" + p2Wins.toString(), 505, 60)
+    context.restore()
+	
 	//-----------Losing Condition------------------//
-	
-	
 	if(ball.x > canvas.width - ball.width/2)//resets right
 	{
-		
 		ball.x = canvas.width/2 - ball.width/2
+		p2Wins++;//for scoring
 	}
 
 	if(ball.x < 0 - ball.width/2)//resets left
 	{
 		
 		ball.x = canvas.width/2 - ball.width/2
+		p1Wins++;//for scoring
 	}
 	
-
-
-
-
-
-
-
-
-
 	//----------------------------------------------//
 
-     //Paddle Canvas Collision
+
+     //Paddle Canvas Collision------------------------//
 	 if(player1.y < 0 + player1.height/2)//top collision
 	 {
 		player1.y = 0 + player1.height/2
@@ -170,8 +178,9 @@ function animate()//
 
 	 }
 	
-	
 //----------------------------------------------------//
+
+
 	//--------------Bounce of Right----------------------
 	/*
 	if(ball.x > canvas.width - ball.width/2 ) 
@@ -198,13 +207,13 @@ function animate()//
 
 		ball.color="yellow";
 		ball.vy = -ball.vy;
-		ball.vx= 1 + ball.vx;
+	
 	}
 	 if (ball.y < 0 + ball.height/2)
 	{
 		ball.color="cyan";
 		ball.vy = -ball.vy;
-		ball.vx= 1 + ball.vx;
+		
 	}
 	//---------------------------------------------------------//
 	

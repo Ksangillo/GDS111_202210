@@ -1,23 +1,20 @@
 
 var canvas;
-var contex;
+var context;
 var interval = 1000/60;
 var player1; 
 var player2;
 var p1Wins = 0;
 var p2Wins = 0;
 
-
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
-
 
 //--------Instinuated Objects-----------------------------------------------------//
 player1 = new GameObject();
 player1.x= 60;
 player1.width = 30;
 player1.height= 150;
-
 
 player2 = new GameObject();
 player2.x= 960;
@@ -33,12 +30,16 @@ ball.vy = 0;
 
 
 timer = setInterval(animate, interval);
-function animate()//
+function animate()
 {
 	context.clearRect(0,0,canvas.width, canvas.height);	
+	player1.drawRect();
+	player2.drawRect();
+	var img = document.getElementById("ric");
+	context.drawImage(img, canvas.width/2-50, canvas.height/2-50, 100, 100);
+	ball.drawCircle();
 
 	//------Calls Controls for game------------------//
-	
 	if(w)//if (d=true), (!s) means  d=false
 	{
 		
@@ -59,7 +60,6 @@ function animate()//
 		
 		player2.y += 6;
 	}
-
 	//---------------------------------------------//
 
 
@@ -72,9 +72,9 @@ function animate()//
 	}
 	
 	
-	if(ball.hitTestObject(player1))
+	if(ball.hitTestObject(player1))//ball  hits top
 	{
-		//ball hits top
+		
 		if(ball.y < player1.y - player1.height/6) //one sixth of the paddle's height)
 		{
 		ball.vx = 6;//positive speed;
@@ -84,7 +84,7 @@ function animate()//
 	}
 	if(ball.hitTestObject(player1))//ball hits bottom
 	{
-		//ball hits top
+		
 		if(ball.y > player1.y ) //one sixth of the paddle's height)
 		{
 		ball.vx = 6;//positive speed;
@@ -125,8 +125,6 @@ function animate()//
 
 	//---------------------BALL-------------------------------//
 	ball.move();
-
-
 	//----Displays Net-------------//
 	context.save();
 	context.strokeStyle = "Yellow";
@@ -142,7 +140,6 @@ function animate()//
 	context.font = "30px Georgia";
 	context.fillText("Player 1 | Player 2", 396, 30);
 
-
 	context.save()
     context.font = "20px Georgia "
     context.fillStyle = "black"
@@ -151,8 +148,6 @@ function animate()//
 	////---------------------------//
 
 
-	
-	
 	//-----------Losing Condition------------------//
 	if(ball.x > canvas.width - ball.width/2)//resets right
 	{
@@ -166,7 +161,6 @@ function animate()//
 		ball.x = canvas.width/2 - ball.width/2
 		p1Wins++;//for scoring
 	}
-	
 	//----------------------------------------------//
 
 
@@ -195,8 +189,7 @@ function animate()//
 		player2.y = canvas.height - player2.height/2
 
 	 }
-	
-//----------------------------------------------------//
+	//----------------------------------------------------//
 
 
 	//--------------Bounce of Right----------------------
@@ -235,10 +228,9 @@ function animate()//
 	}
 	//---------------------------------------------------------//
 	
-	ball.drawCircle();
-	player1.drawRect();
-	player2.drawRect();
 	
 	
-}//
+	
+	
+}
 

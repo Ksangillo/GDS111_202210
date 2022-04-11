@@ -3,9 +3,9 @@ var canvas;
 var context;
 var interval = 1000/60;
 var player1; 
-var prevY1;
-var prevY2;
-var prevyX;
+var player2;
+
+
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
@@ -16,18 +16,17 @@ player1.x= 60;
 player1.width = 30;
 player1.height= 150;
 
+
+player2 = new GameObject();
+player2.x= 960;
+player2.width = 30;
+player2.height= 150;
+
 ball = new GameObject();
 ball.width= 50;
 ball.vx = 6;
 ball.vy = 0;
 
-LTblock = new GameObject(canvas.width , canvas.height, 30, 50);
-LTblock.x= 60;
-LTblock.y = -30;
-
-LBblock = new GameObject(canvas.width , canvas.height, 30, 50,"#00ff00");
-LBblock.x= 60;
-LBblock.y = 830;
 //
 
 
@@ -37,36 +36,28 @@ function animate()//
 {
 	context.clearRect(0,0,canvas.width, canvas.height);	
 	
-	if(s)//if (d=true), (!s) means  d=false
-	{
-		
-		player1.y += 5;
-	}
-	if(w)
+	if(w)//if (d=true), (!s) means  d=false
 	{
 		
 		player1.y += -5;
 	}
-
-	if(LTblock.hitTestObject(player1))//collision Left Top
+	if(s)
 	{
-		player1.y = prev1Y;
 		
+		player1.y += 5;
 	}
-	else
+	if(up)//if (d=true), (!s) means  d=false
 	{
-		prev1Y = player1.y;
+		
+		player2.y += -5;
+	}
+	if(down)
+	{
+		
+		player2.y += 5;
 	}
 
-	if(LBblock.hitTestObject(player1))//collision Left Bottom
-	{
-		player1.y = prevY2;
-		
-	}
-	else
-	{
-		prevY2 = player1.y ;
-	}
+	
 
 	if(ball.hitTestObject(player1))//ball hit middle
 	{
@@ -96,59 +87,94 @@ function animate()//
 		player1.color="orange";
 		}
 	}
-
+	if(ball.hitTestObject(player2))//ball hit middle
+	{
+		
+		ball.vx = -ball.vx-1;
+		player2.color="purple";
+	}
 	
 	
-	
-
-	
-
-
-
+	if(ball.hitTestObject(player2))
+	{
+		//ball hits top
+		if(ball.y < player2.y - player2.height/6) //one sixth of the paddle's height)
+		{
+		ball.vx = -4;//positive speed;
+		ball.vy = -4; //negative speed;
+		player2.color="green";
+		}
+	}
+	if(ball.hitTestObject(player2))//ball hits bottom
+	{
+		//ball hits top
+		if(ball.y > player2.y ) //one sixth of the paddle's height)
+		{
+		ball.vx = -4;//positive speed;
+		ball.vy = 4; //negative speed;
+		player2.color="orange";
+		}
+	}
 	
 	//---------------------BALL-------------------------------//
 	ball.move();
 
 	//-----------Losing Condition------------------//
 	
-
-
-	/*
 	
-	if(ball.x < canvas.width/2-ball,width/2)
+	if(ball.x > canvas.width - ball.width/2)//resets right
 	{
 		
-		ball.x =  canvas.width/2 - ball.width/2;
-		ball.vx = -ball.vx;
-
+		ball.x = canvas.width/2 - ball.width/2
 	}
-	if(ball.x < 0  + ball.width/2)
+
+	if(ball.x < 0 - ball.width/2)//resets left
 	{
-		ball.x =  canvas.width/2 - ball.width/2;
-		ball.vx = -ball.vx;
-
+		
+		ball.x = canvas.width/2 - ball.width/2
 	}
-
-	*/
-
-     //ball hits top
-
-	 if(player1.y > canvas.height - player1.height/2)//better collision
-	 {
-		 player1.y = canvas.height - player1.height	/2
-	 }
-
-	 
-	 if(player1.y < 0 - player1.height/2)
-	 {
-		 player1.y = 0 +  player1.height/2
-	 }
 	
 
-	
 
+
+
+
+
+
+
+
+	//----------------------------------------------//
+
+     //Paddle Canvas Collision
+	 if(player1.y < 0 + player1.height/2)//top collision
+	 {
+		player1.y = 0 + player1.height/2
+
+	 }
+
+	 if(player1.y > canvas.height - player1.height/2)//bottom collision
+	 {
+		player1.y = canvas.height - player1.height/2
+
+	 }
+
+
+	 if(player2.y < 0 + player2.height/2)//top collsion
+	 {
+		player2.y = 0 + player2.height/2
+
+	 }
+
+	 if(player2.y > canvas.height - player2.height/2)//bottom collision
+	 {
+		player2.y = canvas.height - player2.height/2
+
+	 }
+	
+	
 //----------------------------------------------------//
 	//--------------Bounce of Right----------------------
+	/*
 	if(ball.x > canvas.width - ball.width/2 ) 
 	{
 		ball.x = canvas.width - ball.width/2
@@ -166,6 +192,7 @@ function animate()//
 		ball.vx= 1 + ball.vx;//ball increases speed y
 		
 	}
+	*/
 	
 	if (ball.y > canvas.height - ball.height/2)
 	{
@@ -186,7 +213,7 @@ function animate()//
 	
 	ball.drawCircle();
 	player1.drawRect();
-	
+	player2.drawRect();
 	
 	
 }//

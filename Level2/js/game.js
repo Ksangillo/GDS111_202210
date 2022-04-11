@@ -8,9 +8,9 @@ var prevY2;
 var prevyX;
 
 canvas = document.getElementById("canvas");
-	context = canvas.getContext("2d");
+context = canvas.getContext("2d");
 
-//
+//--------Instinuated Objects-----------------------------------------------------//
 player1 = new GameObject();
 player1.x= 60;
 player1.width = 30;
@@ -28,7 +28,7 @@ LTblock.y = -30;
 LBblock = new GameObject(canvas.width , canvas.height, 30, 50,"#00ff00");
 LBblock.x= 60;
 LBblock.y = 830;
-//
+//-----------------------------------------------------------------------//
 
 
 timer = setInterval(animate, interval);
@@ -97,22 +97,10 @@ function animate()//
 		}
 	}
 
-	
-	
-	
-
-	
-
-
-
-	
 	//---------------------BALL-------------------------------//
-	ball.move();
-
+		ball.move();
 	//-----------Losing Condition------------------//
 	
-
-
 	/*
 	
 	if(ball.x < canvas.width/2-ball,width/2)
@@ -130,14 +118,8 @@ function animate()//
 	}
 
 	*/
-
-     //ball hits top
-
-
-
-	
-
-//----------------------------------------------------//
+	//--------------------------------------------//
+//------------------------------------------------------------//
 	//--------------Bounce of Right----------------------
 	if(ball.x > canvas.width - ball.width/2 ) 
 	{
@@ -156,7 +138,7 @@ function animate()//
 		ball.vx= 1 + ball.vx;//ball increases speed y
 		
 	}
-	
+	//------------Bounce of Top & Bottom----------------
 	if (ball.y > canvas.height - ball.height/2)
 	{
 
@@ -170,9 +152,7 @@ function animate()//
 		ball.vy = -ball.vy;
 		ball.vx= 1 + ball.vx;
 	}
-
-	
-	//---------------------------------------------------
+	//---------------------------------------------------------//
 	
 	ball.drawCircle();
 	player1.drawRect();

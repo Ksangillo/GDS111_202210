@@ -6,9 +6,11 @@ var player1;
 var player2;
 var p1Wins = 0;
 var p2Wins = 0;
+var img;
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
+img = document.getElementById("ric");
 
 //--------Instinuated Objects-----------------------------------------------------//
 player1 = new GameObject();
@@ -24,7 +26,9 @@ player2.height= 150;
 ball = new GameObject();
 ball.width= 50;
 ball.vx = 6;
-ball.vy = 0;
+ball.vy = 6;
+
+
 
 //------------------------------------------------------------------------------//
 
@@ -33,12 +37,7 @@ timer = setInterval(animate, interval);
 function animate()
 {
 	context.clearRect(0,0,canvas.width, canvas.height);	
-	player1.drawRect();
-	player2.drawRect();
-	var img = document.getElementById("ric");
-	context.drawImage(img, canvas.width/2-50, canvas.height/2-50, 100, 100);
-	ball.drawCircle();
-
+	
 	//------Calls Controls for game------------------//
 	if(w)//if (d=true), (!s) means  d=false
 	{
@@ -71,7 +70,6 @@ function animate()
 		player1.color="purple";
 	}
 	
-	
 	if(ball.hitTestObject(player1))//ball  hits top
 	{
 		
@@ -82,6 +80,7 @@ function animate()
 		player1.color="green";
 		}
 	}
+
 	if(ball.hitTestObject(player1))//ball hits bottom
 	{
 		
@@ -92,13 +91,13 @@ function animate()
 		player1.color="orange";
 		}
 	}
+
 	if(ball.hitTestObject(player2))//ball hit middle
 	{
 		
 		ball.vx = -ball.vx-1;
 		player2.color="purple";
 	}
-	
 	
 	if(ball.hitTestObject(player2))
 	{
@@ -110,6 +109,7 @@ function animate()
 		player2.color="green";
 		}
 	}
+
 	if(ball.hitTestObject(player2))//ball hits bottom
 	{
 		//ball hits top
@@ -125,6 +125,7 @@ function animate()
 
 	//---------------------BALL-------------------------------//
 	ball.move();
+	
 	//----Displays Net-------------//
 	context.save();
 	context.strokeStyle = "Yellow";
@@ -230,7 +231,11 @@ function animate()
 	
 	
 	
-	
+	player1.drawRect();
+	player2.drawRect();
+	ball.drawCircle();
+	context.drawImage(img, canvas.width/2-50, canvas.height/2-50, 100, 100);
+
 	
 }
 

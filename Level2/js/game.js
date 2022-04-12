@@ -13,23 +13,20 @@ context = canvas.getContext("2d");
 img = document.getElementById("ric");
 
 //--------Instinuated Objects-----------------------------------------------------//
-player1 = new GameObject();
+player1 = new GameObject(context, canvas);
 player1.x= 60;
 player1.width = 30;
 player1.height= 150;
 
-player2 = new GameObject();
+player2 = new GameObject(context, canvas);
 player2.x= 960;
 player2.width = 30;
 player2.height= 150;
 
-ball = new GameObject();
+ball = new GameObject(context, canvas);
 ball.width= 50;
 ball.vx = 6;
 ball.vy = 6;
-
-
-
 //------------------------------------------------------------------------------//
 
 
@@ -59,7 +56,7 @@ function animate()
 		
 		player2.y += 6;
 	}
-	//---------------------------------------------//
+	//----------------------------------------------//
 
 
 	//-------Ball Collision with Paddle------------------------------------------------//
@@ -122,11 +119,7 @@ function animate()
 	}
 	//-------------------------------------------------------------------------------------//
 
-
-	//---------------------BALL-------------------------------//
-	ball.move();
-	
-	//----Displays Net-------------//
+	//----Displays Net-----------------//
 	context.save();
 	context.strokeStyle = "Yellow";
 	context.beginPath();
@@ -135,9 +128,10 @@ function animate()
 	context.lineWidth = 5;
 	context.stroke();
 	context.restore();
-	///---------------------------//
+	///------------------------------//
 	
-	//----------Displays score--------------//
+
+	//----------Displays score-------------------------------------------//
 	context.font = "30px Georgia";
 	context.fillText("Player 1 | Player 2", 396, 30);
 
@@ -146,9 +140,10 @@ function animate()
     context.fillStyle = "black"
     context.fillText( p1Wins.toString()+"-" + p2Wins.toString(),496, 60)
     context.restore();
-	////---------------------------//
+	////----------------------------------------------------------------//
 
-
+//---------------------BALL--------------------------------------------------------------//
+		ball.move();
 	//-----------Losing Condition------------------//
 	if(ball.x > canvas.width - ball.width/2)//resets right
 	{
@@ -165,7 +160,7 @@ function animate()
 	//----------------------------------------------//
 
 
-     //Paddle Canvas Collision------------------------//
+     //Paddle Canvas Collision----------------------------------------------//
 	 if(player1.y < 0 + player1.height/2)//top collision
 	 {
 		player1.y = 0 + player1.height/2
@@ -190,7 +185,7 @@ function animate()
 		player2.y = canvas.height - player2.height/2
 
 	 }
-	//----------------------------------------------------//
+	//-------------------------------------------------------------------//
 
 
 	//--------------Bounce of Right----------------------
@@ -214,7 +209,7 @@ function animate()
 	}
 	*/
 	
-	if (ball.y > canvas.height - ball.height/2)
+	if (ball.y > canvas.height - ball.height/2)/////Bounce of top & Bottom
 	{
 
 		ball.color="yellow";
@@ -233,8 +228,8 @@ function animate()
 	
 	player1.drawRect();
 	player2.drawRect();
-	ball.drawCircle();
-	context.drawImage(img, canvas.width/2-50, canvas.height/2-50, 100, 100);
+	//ball.drawCircle();
+	ball.drawBall(img, 80, 80);
 
 	
 }

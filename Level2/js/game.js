@@ -228,9 +228,9 @@ function animate()
 	
 	player1.drawRect();
 	player2.drawRect();
-	//ball.drawCircle();
+	
 	ball.drawBall(img, 80, 80);
 
 	
-}
+}//ball.x=player.x + player.width/2 + ball.width/2 prevents the ball from sinking into a collision.
 

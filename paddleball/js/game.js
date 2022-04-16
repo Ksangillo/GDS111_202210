@@ -25,7 +25,8 @@ ball.x = canvas.width/2;
 ball.y = canvas.height/2;
 ball.width= 40;
 ball.vx = 0;
-ball.vy +=0;
+ball.vy =0;
+
 //------------------------------------------------------------------------------//
 
 
@@ -53,7 +54,7 @@ function animate()
 	//-------Ball Collision with Paddle------------------------------------------------//
 	if(ball.hitTestObject(player1))//ball hit middle
 	{
-		
+		ball.x=player1.x + player1.width/2 + ball.width/2
 		ball.vx = -ball.vx+1;
 		player1.color="purple";
 		p1Wins++;
@@ -64,6 +65,7 @@ function animate()
 		
 		if(ball.y < player1.y - player1.width/6) //one sixth of the paddle's height)
 		{
+		ball.x=player1.y + player1.width/2 + ball.width/2
 		ball.vx = 6;//positive speed;
 		ball.vy = -6; //negative speed;
 		player1.color="green";
@@ -76,6 +78,7 @@ function animate()
 		
 		if(ball.x > player1.x ) //one sixth of the paddle's height)
 		{
+		ball.x=player1.x + player1.width/2 + ball.width/2
 		ball.vx = 6;//positive speed;
 		ball.vy = 6; //negative speed;
 		player1.color="orange";
@@ -134,27 +137,27 @@ function animate()
 
 	//--------------Bounce of Right----------------------
 	
-	if(ball.x > canvas.width - ball.width/2 ) 
+	if(ball.x > canvas.width - ball.width/2 ) //right side
 	{
 		ball.x = canvas.width - ball.width/2
 		ball.vx = -ball.vx;//reverses the direction
 		ball.vx= 1 + ball.vx;//ball increases speed x
 		ball.color="red";//changes color cause of var ball
-		p1Wins=0;
+		
 		
 	}
 	
 	//-------------Bounce of Left-----------------------
-	 if (ball.x < 0 + ball.width/2 )
+	 if (ball.x < 0 + ball.width/2 )//left side
 	{
 		ball.color="black";
 		ball.vx = -ball.vx;
 		ball.vx= 1 + ball.vx;//ball increases speed y
-		p1Wins=0;
+		
 	}
 	
 	
-	if (ball.y > canvas.height - ball.height/2)/////Bounce of top & Bottom
+	if (ball.y > canvas.height - ball.height/2)//Bottom bounce
 	{
 
 		ball.color="yellow";
@@ -162,7 +165,7 @@ function animate()
 		p1Wins=0;
 	
 	}
-	 if (ball.y < 0 + ball.height/2)
+	 if (ball.y < 0 + ball.height/2)//top bounce
 	{
 		ball.color="cyan";
 		ball.vy = -ball.vy;
@@ -176,6 +179,7 @@ function animate()
 	player1.drawRect();
 	ball.drawCircle();
 	
+	
 	//----Draws Line-----------------//
 	context.save();
 	context.strokeStyle = "black";
@@ -187,5 +191,5 @@ function animate()
 	context.restore();
 	///------------------------------//
 
-}//ball.x=player.x + player.width/2 + ball.width/2 prevents the ball from sinking into a collision.
+}//ball.x=player1.x + player1.width/2 + ball.width/2 prevents the ball from sinking into a collision.
 

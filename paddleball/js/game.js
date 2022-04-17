@@ -4,10 +4,15 @@ var context;
 var interval = 1000/60;
 var player1; 
 var p1Wins = 0;
-var gravity;
+
 
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
+//---------------Set Friction and Gravity-----------------
+var frictionX = .85;	
+var frictionY = .97;
+var gravity = 1;
+//--------------------------------------------------------
 
 
 //--------Instinuated Objects-----------------------------------------------------//
@@ -17,6 +22,7 @@ player1.y=550;
 player1.width = 250;
 player1.height= 40;
 player1.color=("#00ffff");
+player1.force=2;
 
 
 
@@ -24,8 +30,9 @@ ball = new GameObject(context, canvas);
 ball.x = canvas.width/2;
 ball.y = canvas.height/2;
 ball.width= 40;
-ball.vx = 0;
+ball.vx = 5;
 ball.vy =0;
+
 
 //------------------------------------------------------------------------------//
 
@@ -41,12 +48,19 @@ function animate()
 	{
 		
 		player1.x += 6;
+		player1.vx += player1.ax * player1.force;
+		
 	}
 	if(a)
 	{
 		
 		player1.x += -6;
+		player1.vx += player1.ax * -player1.force;
 	}
+	
+	player1.vx *= frictionX;
+	
+	player1.x += player1.vx;
 
 	//----------------------------------------------//
 
@@ -63,9 +77,9 @@ function animate()
 	if(ball.hitTestObject(player1))//ball  hits top
 	{
 		
-		if(ball.y < player1.y - player1.width/6) //one sixth of the paddle's height)
+		if(ball.y < player1.x - player1.width/6) //one sixth of the paddle's height)
 		{
-		ball.x=player1.y + player1.width/2 + ball.width/2
+		ball.x=player1.x + player1.width/2 + ball.width/2
 		ball.vx = 6;//positive speed;
 		ball.vy = -6; //negative speed;
 		player1.color="green";
@@ -99,7 +113,7 @@ function animate()
 	////----------------------------------------------------------------//
 
 //---------------------BALL--------------------------------------------------------------//
-		//ball.move();
+		ball.move();
 	//-----------Losing Condition------------------//
 	/*
 	if(ball.x > canvas.width - ball.width/2)//resets right

@@ -37,8 +37,8 @@ function GameObject(context,canvas,x,y,w,h,color)//Bascially a blank character s
 	
 
 	this.force = 1;
-	this.ax = 1;
-	this.ay = 1;
+	this.ax = 1;//accelraton x
+	this.ay = 1;//accel y
 	this.vx = 0;
 	this.vy = 0;
 	

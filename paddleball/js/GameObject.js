@@ -35,7 +35,6 @@ function GameObject(context,canvas,x,y,w,h,color)//Bascially a blank character s
 	
 	//player's velocity or speed on each axis
 	
-
 	this.force = 1;
 	this.ax = 1;//accelraton x
 	this.ay = 1;//accel y

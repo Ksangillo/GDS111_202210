@@ -29,7 +29,8 @@ player1.force=2;
 ball = new GameObject(context, canvas);
 ball.x = canvas.width/2;
 ball.y = canvas.height/2;
-ball.width= 40;
+ball.force=1;
+ball.width= 50;
 ball.vx = 5;
 ball.vy =0;
 
@@ -68,8 +69,9 @@ function animate()
 	//-------Ball Collision with Paddle------------------------------------------------//
 	if(ball.hitTestObject(player1))//ball hit middle
 	{
-		ball.x=player1.x + player1.width/2 + ball.width/2
-		ball.vx = -ball.vx+1;
+		
+		ball.y=player1.y/2 - ball.height/2
+		ball.vy = -35;
 		player1.color="purple";
 		p1Wins++;
 	}
@@ -77,24 +79,27 @@ function animate()
 	if(ball.hitTestObject(player1))//ball  hits top
 	{
 		
-		if(ball.y < player1.x - player1.width/6) //one sixth of the paddle's height)
+		if(ball.y < player1.x - player1.height/6) //one sixth of the paddle's height)
 		{
-		ball.x=player1.x + player1.width/2 + ball.width/2
-		ball.vx = 6;//positive speed;
-		ball.vy = -6; //negative speed;
+		ball.y=player1.y-player1.height/2 - ball.height/6
+		ball.vx=ball.force;
+		ball.vy = -35;
 		player1.color="green";
 		p1Wins++;
 		}
+			
+	
+		
 	}
 
 	if(ball.hitTestObject(player1))//ball hits bottom
 	{
 		
-		if(ball.x > player1.x ) //one sixth of the paddle's height)
+		if(ball.x > player1.width ) 
 		{
-		ball.x=player1.x + player1.width/2 + ball.width/2
-		ball.vx = 6;//positive speed;
-		ball.vy = 6; //negative speed;
+		ball.y=player1.y+player1.height/2 - ball.height
+		ball.vx=-ball.force;
+		ball.vy = -35;
 		player1.color="orange";
 		p1Wins++;
 		}
@@ -155,7 +160,7 @@ function animate()
 	{
 		ball.x = canvas.width - ball.width/2
 		ball.vx = -ball.vx;//reverses the direction
-		ball.vx= 1 + ball.vx;//ball increases speed x
+		ball.vy = -ball.vy * .67
 		ball.color="red";//changes color cause of var ball
 		
 		
@@ -165,29 +170,40 @@ function animate()
 	 if (ball.x < 0 + ball.width/2 )//left side
 	{
 		ball.color="black";
+		ball.x = 0 + ball.width/2
 		ball.vx = -ball.vx;
-		ball.vx= 1 + ball.vx;//ball increases speed y
+		ball.vy = -ball.vy * .67
+	
 		
 	}
 	
 	
 	if (ball.y > canvas.height - ball.height/2)//Bottom bounce
 	{
-
+		ball.y = canvas.height/2 - ball.height/2;
+		ball.vy = -ball.vy * .67;
 		ball.color="yellow";
-		ball.vy = -ball.vy;
 		p1Wins=0;
 	
 	}
 	 if (ball.y < 0 + ball.height/2)//top bounce
 	{
+		ball.y = 0 + ball.height/2;
+		ball.vy = ball.vy * .67;
 		ball.color="cyan";
-		ball.vy = -ball.vy;
-		p1Wins=0;
+		//ball.vy = -ball.vy;
+		
 		
 	}
 	//---------------------------------------------------------//
 	
+	ball.vy *= frictionY;
+	//ball.vx *= frictionX;
+	
+	ball.vy += gravity;
+	
+	//ball.x += ball.vx;
+	ball.y += ball.vy;
 	
 	
 	player1.drawRect();

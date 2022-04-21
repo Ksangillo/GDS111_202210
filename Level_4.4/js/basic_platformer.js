@@ -96,6 +96,7 @@ function animate()
 	
 
 	while(platform1.hitTestPoint(player.bottom()) && player.vy >=0 && !s )//s potential climbing mechanic or grabb if s means s== true
+	{
 		player.canJump = true;
 		player.y--;
 		player.vy = 0;

@@ -19,7 +19,7 @@ var player;
 		
 	
 	platform1 = new GameObject();
-		platform1.x = canvas.width/2+150;
+		platform1.x = platform1.width;
 		platform1.y = platform0.y- platform0.height/2 - platform1.height/2;
 		platform1.color = "#66ff33";
 		platform1.vx = 3;
@@ -30,6 +30,12 @@ var player;
 		platform2.color = "#66ff33";
 		platform2.y = platform0.y- 200;
 		platform2.color = "#66ff33";
+
+		platform3 = new GameObject();
+		platform3.x = canvas.width/2+150;
+		platform3.y = platform0.y- platform0.height/2 - platform1.height/2;
+		platform3.color = "#66ff33";
+		platform3.vx = 3;
 
 		
 	
@@ -117,6 +123,28 @@ function animate()
 		player.vx = 0;
 	}
 	
+	while(platform3.hitTestPoint(player.bottom()) && player.vy >=0)
+	{
+		player.y--;
+		player.vy = 0;
+		player.canJump = true;
+	}
+	while(platform3.hitTestPoint(player.left()) && player.vx <=0)
+	{
+		player.x++;
+		player.vx = 0;
+	}
+	while(platform3.hitTestPoint(player.right()) && player.vx >=0)
+	{
+		player.x--;
+		player.vx = 0;
+	}
+	while(platform3.hitTestPoint(player.top()) && player.vy <=0)
+	{
+		player.y++;
+		player.vy = 0;
+	}
+	
 	while(platform1.hitTestPoint(player.left()))
 	{
 		player.x++;
@@ -139,9 +167,10 @@ function animate()
 	
 	
 	platform0.drawRect();
-	platform1.drawRect();
 	platform2.drawRect();
+	platform3.drawRect();
 	player.drawRect();
+	
 	//Show hit points
 	player.drawDebug();
 	goal.drawCircle();

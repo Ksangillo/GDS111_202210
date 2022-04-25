@@ -5,7 +5,7 @@ var context;
 var timer;
 var interval;
 var player;
-var key;
+var key = false;
 
 
 	canvas = document.getElementById("canvas");
@@ -31,8 +31,6 @@ var key;
 		platform2.y = platform0.y- 200;
 		platform2.color = "#66ff33";
 
-		
-	
 	goal = new GameObject({width:24, height:50, x:20, y:platform0.y-100, color:"#00ffff"});
 
 
@@ -74,7 +72,12 @@ function animate()
 	player.y += Math.round(player.vy);
 	
 	platform1.x += platform1.vx;
+	/*if(player.hitTestObject(platform1) && key)
+	{
 
+		platform1.y += 2;
+	}
+*/
 	while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
 	{
 		player.y--;
@@ -117,7 +120,7 @@ function animate()
 		player.x--;
 		player.vx = 0;
 	}
-	while(platform1.hitTestPoint(player.top()) && player.vy <=0)
+	/*while(platform1.hitTestPoint(player.top()) && player.vy <=0)
 	{
 		player.y++;
 		player.vy = 0;
@@ -133,10 +136,13 @@ function animate()
 		player.x++;
 		player.vx = 0;
 	}
+	*/
 	while(platform1.hitTestPoint(player.right()) && player.vx >=0)
 	{
 		player.x--;
 		player.vx = 0;
+		
+		
 	}
 
 	
@@ -144,23 +150,22 @@ function animate()
 	//---------Run this program first.
 	//---------Get the pearl to open the door--------------------------------------------------------------------------------------------
 	//---------Hint: you'll need a new variable to keep track of the key-----------------------------------------------------------------
-	
-	if(player.hitTestObject(goal))
+
+	if(goal.hitTestObject(platform1))
 	{
-		goal.y = 10000;
-		
+		platform1.y = 10000;
+	}
+
+	if(player.hitTestObject(goal) && s)
+	{
+		goal.x = player.right().x;
+		key = true;
+		platform1.color= "green";
+
 	}
 	
 	
 
-
-
-	
-
-	
-	
-	
-	
 	
 	platform0.drawRect();
 	platform2.drawRect();

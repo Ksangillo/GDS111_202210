@@ -118,7 +118,7 @@ function animate()
 	context.save()
     context.font = "16px arial black"
     context.fillStyle = ("#555555")
-    context.fillText("score:"+p1Wins.toString(),80, 25)
+    context.fillText("score:"+ p1Wins.toString(),80, 25)
     context.restore();
 	////----------------------------------------------------------------//
 

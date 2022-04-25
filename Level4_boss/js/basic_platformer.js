@@ -5,7 +5,7 @@ var context;
 var timer;
 var interval;
 var player;
-var dasht;
+
 
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");	
@@ -55,7 +55,7 @@ function animate()
 	{
 		player.vx += player.ax * player.force;
 		
-		if(dd)
+		if(dd)//animates with the player velocity
 		{
 			dd = false;
 			player.vx += 50;

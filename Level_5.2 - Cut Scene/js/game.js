@@ -17,7 +17,7 @@ canvas = document.getElementById("canvas");
 	canvas.style.backgroundColor = "black";
 	
 //This is used to determine which state is being called
-var currentState = 5;
+var currentState = 4;
 //This will be an array of functions that can be called using an index
 var states =[];
 

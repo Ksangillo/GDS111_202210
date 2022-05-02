@@ -10,6 +10,7 @@ var fY = .97;
 
 var gravity = 1;//declares gravity
 player = new GameObject({x:150, y:canvas.height - 150});
+var jCount = 0;
 
 
 platform0 = new GameObject();
@@ -40,20 +41,29 @@ function animate()
 	context.clearRect(0,0,canvas.width, canvas.height);
 	
 	
-	if(w && player.canJump && player.vy == 0)// animates movement
+	if(w && player.canJump && player.vy >= 0)// animates movement
 	{
-		player.canJump = false;
-		player.vy += player.jumpHeight;
 
-		if(ww)
-		{
-			ww = false;
-			player.canJump = true;
-			player.vy += player.jumpHeight;
-			
-		}
+		player.canJump = false;
+		player.vy = player.jumpHeight;
+		
+		
+		
+	
+	
+	}
+	if(w && ww && !player.canJump && jCount == 0)
+	{
+		
+		ww = false;
+		player.vy = player.jumpHeight;
+		jCount++;//jump count
+		console.log(ww)
 	}
 
+	
+
+	
 	if(a)
 	{
 		player.vx += -player.ax * player.force;
@@ -62,8 +72,11 @@ function animate()
 		{
 			aa = false;
 			player.vx += -50;
+			
 		}
+		
 	}
+
 	if(d)
 	{
 		player.vx += player.ax * player.force;
@@ -73,6 +86,7 @@ function animate()
 			dd = false;
 			player.vx += 50;
 		}
+
 	}
 
 	player.vx *= fX;//friction
@@ -90,6 +104,8 @@ while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
 		player.y--;
 		player.vy = 0;
 		player.canJump = true;
+		jCount = 0;
+		console.log(ww)
 	}
 	while(platform0.hitTestPoint(player.left()) && player.vx <=0)
 	{

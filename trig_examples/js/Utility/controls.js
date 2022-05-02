@@ -2,12 +2,6 @@ var w = false;
 var a = false;
 var s = false;
 var d = false;
-var aa = false;
-var dd = false;
-var ww = false;
-var dashd;
-var dasha;
-var djump;
 
 
 document.addEventListener("keydown", press);
@@ -42,18 +36,12 @@ function release(e)
 	//console.log(e.keyCode);
 	
 	if(e.keyCode == 87)
-	{	
+	{
 		w = false;
-		if(jCount == 0)ww = true;//allows it double jump again once you hit the ground
-		//clearTimeout(djump);//delete any remaing time
-		//djump= setTimeout(function(){ww=false;}, 300);//set time after key release
 	}
 	if(e.keyCode == 65)
 	{
 		a = false;
-		aa=true;
-		clearTimeout(dasha);//delete any remaing time
-		dasha= setTimeout(function(){aa=false;}, 300);//set time after key release
 	}
 	if(e.keyCode == 83)
 	{
@@ -62,8 +50,5 @@ function release(e)
 	if(e.keyCode == 68)
 	{
 		d = false;
-		dd = true;
-		clearTimeout(dashd);//delete any remaing time
-		dashd= setTimeout(function(){dd=false;}, 300);//set time after key release
 	}
 }

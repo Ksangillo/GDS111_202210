@@ -57,16 +57,6 @@ function animate()
 	//------------------------------------------------------END OF INSTRUCTIONS-------------------------------------------------
 	//--------------------------------------------------------------------------------------------------------------------------
 	
-	if(bullet.hitTestObject(canvasTrigger) == false)
-	{
-	 bullet.x = turret.x;
-	 bullet.y = turret.y;
-	}
-	if(bullet.x == turret.x && bullet.y == turret.y)
-	{
-		bullet.vx = Math.cos(turret.angle * Math.PI/180) * 5;
-		bullet.vy = Math.sin(turret.angle * Math.PI/180) * 5;
-	}
 	
 	//--------Follows the player-----/////
 	var dx = player.x - turret.x;
@@ -78,6 +68,18 @@ function animate()
 	
 	turret.angle = radians * 180/Math.PI;
 	//------------------------------////
+	
+	if(bullet.hitTestObject(canvasTrigger) == false)
+	{
+	 bullet.x = turret.x;
+	 bullet.y = turret.y;
+	}
+	if(bullet.x == turret.x && bullet.y == turret.y)
+	{
+		bullet.vx = Math.cos(turret.angle * Math.PI/180) * 5;
+		bullet.vy = Math.sin(turret.angle * Math.PI/180) * 5;
+	}
+	
 	
 	bullet.move();
 	player.drawTriangle();

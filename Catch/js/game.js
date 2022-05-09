@@ -4,13 +4,9 @@ var context;
 var interval = 1000/60;
 var player1; 
 var p1Wins = 0;
-//---------------Set Friction and Gravity-----------------
-var frictionX = .97;	
-var frictionY = .97;
-var gravity = 1;
-//--------------------------------------------------------
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
+canvas.style.backgroundColor="black";
 
 //--------Instinuated Objects-----------------------------------------------------//
 player1 = new GameObject(context, canvas);
@@ -21,32 +17,51 @@ player1.height= 50;
 player1.color = ("#ffff00");
 player1.force = 2;
 
-var total = 12;
+var total = 5;
 var pt = [];
-var colors= ["white", "#88ff88"]
+var c = [];
+var colors= []
+var currentStates = 0;
+var state = []
+
 
 
 for(var i=0; i < total; i++)
 	{
-		pt[i] = new GameObject({width:10, height:10});
-		pt[i].x = Math.random() * canvas.width;
+		
+		
+		c[i] = new GameObject({width:20, height:20});
+		c[i].color = "red";
 
-		var randomColor = Math.round(Math.random());
-		pt[i].color = colors[randomColor]
+		c[i].x = Math.random() * canvas.width;
+		c[i].y = Math.random() * canvas.height;
+		c[i].vy += rand(5,5) ;
+
+		pt[i] = new GameObject({width:20, height:20});
+		pt[i].color = "green";
 
 		pt[i].x = Math.random() * canvas.width;
 		pt[i].y = Math.random() * canvas.height;
-		pt[i].vy = Math.random() * 10 + 5;
+		pt[i].vy += rand(5,5) ;
 	}
 //------------------------------------------------------------------------------//
+
+
+
+//---------------Set Friction and Gravity-----------------
+var frictionX = .97;	
+var frictionY = .97;
+var gravity = 1;
+//--------------------------------------------------------
 
 
 timer = setInterval(animate, interval);
 function animate()
 {
-	context.clearRect(0,0,canvas.width, canvas.height);	
-
+	context.clearRect(0,0,canvas.width, canvas.height);
+	states[currentStates]();
 	
+
 	//------Calls Controls for game------------------//
 	if(d)//if (d=true), (!s) means  d=false
 	{
@@ -67,10 +82,25 @@ function animate()
 	player1.x += player1.vx;
 
 	//----------------------------------------------//
-	
-	
-	
 
+
+
+	
+	if(player1.hitTestObject(c[p]))
+	{
+		
+
+		p1Wins = 0;
+		player1.color = "Red";
+		pt[p].y = 0;
+		c[p].y = 0;
+		
+	}
+
+
+
+
+	
      //Paddle Canvas Collision----------------------------------------------//
 	 if(player1.x < 0 + player1.width/2)//left collison
 	 {
@@ -87,23 +117,58 @@ function animate()
 	 }
 	//-------------------------------------------------------------------//
 
-	//---Draws-----------------------//
-	
-	player1.drawRect();
+
+
+	//----------Displays score-------------------------------------------//
+	context.save()
+    context.font = "30px arial black"
+    context.fillStyle = ("#555555")
+    context.fillText("Score:"+ p1Wins.toString(),50, 50)
+    context.restore();
+	////----------------------------------------------------------------//
+
+	//---Draws Objects to the canvas-----------------------//
+	state[0]
+	{
 	for(var p = 0; p < pt.length; p++)
 	{	
-		pt[p].x += pt[p].vx;
-		pt[p].y += pt[p].vy;
 
-		pt[p].color = colors[randomColor]
-		pt[p].x = Math.random() * canvas.width;
-		pt[p].y = Math.random() * canvas.height;
-		pt[p].vy = Math.random() * 10 + 5;
+
+		state[1];
+		if(player1.hitTestObject(c[p]))
+		{
+			
+
+			p1Wins = 0;
+			player1.color = "Red";
+			pt[p].y = 0;
+			c[p].y = 0;
+			
+		}
+
+		
+		if(player1.hitTestObject(pt[p]))
+		{
+			p1Wins++;
+			player1.color = "Green";
+		}
+		
+
+
+		if(pt[p].y >= canvas.height || c[p].y >= canvas.height)
+		{
+			pt[p].y = 0;
+			c[p].y = 0;
+		}
+
+		pt[p].move();
+		c[p].move();
 		pt[p].drawRect();
-	}
+		c[p].drawCircle();
+		
+	}	
+		player1.drawRect();
+	//-----------------------------//
+}
 	
-	///------------------------------//
-
-	
-
 }

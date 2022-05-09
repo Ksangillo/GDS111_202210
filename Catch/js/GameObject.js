@@ -1,116 +1,134 @@
 // JavaScript Document
-function GameObject(context,canvas,x,y,w,h,color)//Bascially a blank character sheet or template
-{
-
-	if(context == undefined)
-		context = window.context;
-	
-	if (canvas == undefined)
-		canvas = window.canvas;
-
-	//Default Values
-	if(x == undefined)
+function GameObject(obj)
+{	
 		this.x = canvas.width/2;
-	else 
-		this.x = x;
-	if(y == undefined)
 		this.y = canvas.height/2;
-	else 
-		this.y = y;
-	
-	if(w == undefined)
 		this.width = 100;
-	else 
-		this.width = w;
-	if(h == undefined)
 		this.height = 100;
-	else 
-		this.height = h;
-	
-		//player's color
-	if(color == undefined)
 		this.color = "#ff0000";
-	else 
-		this.color = color;
-	
-	//player's velocity or speed on each axis
-	
-	this.force = 1;
-	this.ax = 1;//accelraton x
-	this.ay = 1;//accel y
-	this.vx = 0;
-	this.vy = 0;
-	
+		this.force = 1;
+		this.ax = 1;
+		this.ay = 1;
+		this.vx = 0;
+		this.vy = 0;
+
+	//whether or not the object can jump
+	this.canJump = false;
+	this.jumpHeight = -25;
 
 	
-	//This draws the player to the screen
+	
+	//------Allows us to pass object literals into the class to define its properties--------//
+		//------This eliminate the need to pass in the property arguments in a specific order------------//
+		if(obj!== undefined)
+		{
+			for(value in obj)
+			{
+				if(this[value]!== undefined)
+				{
+					this[value] = obj[value];
+				}
+			}
+		}
+		
 	this.drawRect = function()
 	{
 		context.save();
-		context.fillStyle = this.color;
-		context.translate(this.x, this.y);
-		context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
-		context.restore();
-		
-	}		
-	
-	this.drawBall = function(img, w, h)
-	{
-		context.save();
-		context.drawImage(img, this.x, this.y, w, h);
-		context.restore();
-		
-	}
-	
-	this.drawCircle = function()
-	{
-		context.save();
-		context.fillStyle = this.color;
-		context.beginPath();
-		context.translate(this.x, this.y);
-		context.arc(0, 0, this.width/2, 0, 360 *Math.PI/180, true);
-		context.arc(0, 0, this.width/2, 0, 360 *Math.PI/180, true);
-		context.closePath();
-		context.fill();
+			context.fillStyle = this.color;
+			context.translate(this.x, this.y);
+			context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
 		context.restore();
 		
 	}	
 	
-	//This changes the player's position
+	this.drawCircle = function()
+	{
+		context.save();
+			context.fillStyle = this.color;
+			context.beginPath();
+			context.translate(this.x, this.y);
+			context.arc(0, 0, this.radius(), 0, 360 *Math.PI/180, true);
+			context.closePath();
+			context.fill();
+		context.restore();
+		
+	}	
+	
 	this.move = function()
 	{
 		this.x += this.vx;
 		this.y += this.vy;
 	}
+
 	
+	
+	//---------Returns object's for the top, bottom, left and right of an object's bounding box.
 	this.left = function() 
 	{
-		return this.x - this.width/2;
+		return {x:this.x - this.width/2 , y:this.y}
 	}
 	this.right = function() 
 	{
-		return this.x + this.width/2;
+		return {x:this.x + this.width/2 , y:this.y}
 	}
 	
 	this.top = function() 
 	{
-		return this.y - this.height/2;
+		return {x:this.x, y:this.y - this.height/2}
 	}
 	this.bottom = function() 
 	{
-		return this.y + this.height/2;
+		return {x:this.x , y:this.y + this.height/2}
 	}
 	
 	this.hitTestObject = function(obj)
 	{
-		if(this.left() < obj.right() && 
-		   this.right() > obj.left() &&
-		   this.top() < obj.bottom() &&
-		   this.bottom() > obj.top())
+		if(this.left().x <= obj.right().x && 
+		   this.right().x >= obj.left().x &&
+		   this.top().y <= obj.bottom().y &&
+		   this.bottom().y >= obj.top().y)
 		{
 			return true
 		}
 		return false;
 	}
+		
+	//------Tests whether a single point overlaps the bounding box of another object-------
+	this.hitTestPoint = function(obj)
+	{
+		if(obj.x >= this.left().x && 
+		   obj.x <= this.right().x &&
+		   obj.y >= this.top().y &&  
+		   obj.y <= this.bottom().y)
+		{
+			return true;
+		}
+		return false;
+	}
 	
+	/*-----Sets or gets the radius value--------*/
+	this.radius = function(newRadius)
+	{
+			return this.width/2; 
+	}
+	
+	//Draws the collision points
+	this.drawDebug = function()
+	{
+		var size = 5;
+		context.save();
+		context.fillStyle = "black";
+		context.fillRect(this.left().x-size/2, this.left().y-size/2, size, size);
+		context.fillRect(this.right().x-size/2, this.right().y-size/2, size, size);
+		context.fillRect(this.top().x-size/2, this.top().y-size/2, size, size);
+		context.fillRect(this.bottom().x-size/2, this.bottom().y-size/2, size, size);
+		context.fillRect(this.x-size/2, this.y-size/2, size, size);
+		context.restore();
+	}
+	
+	
+}
+function rand(low, high)
+{
+		return Math.random() * (high - low) + low;
 }

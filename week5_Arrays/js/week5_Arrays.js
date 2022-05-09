@@ -27,7 +27,7 @@ for(var i = 0; i < amt; i++)
 	dots[i].y = Math.random() * canvas.height;
 	dots[i].width = rand(5,20);
 	dots[i].vy = rand(-40,40);
-	dots[i].vx = rand(-10,10);
+	//dots[i].vx = rand(-10,10);
 	dots[i].color = colors[Math.floor(rand(0,2.9))];
 }
 

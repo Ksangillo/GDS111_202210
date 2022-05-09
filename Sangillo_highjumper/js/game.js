@@ -14,11 +14,20 @@ var jCount = 0;
 
 
 platform0 = new GameObject();
-platform0.width = canvas.width + 100;
+platform0.width = canvas.width;
 platform0.height = 100;
 platform0.x = platform0.width/2;
 platform0.y = canvas.height;
 platform0.color = "#66ff33";
+
+platform1 = new GameObject();
+platform1.width = 300;
+platform1.height = 300;
+platform1.x = canvas.width/2;
+platform1.y = canvas.height/2 + 200;
+platform1.color = "#66ff33";
+
+
 
 
 
@@ -66,6 +75,7 @@ function animate()
 	
 	if(a)
 	{
+		
 		player.vx += -player.ax * player.force;
 
 		if(aa)
@@ -74,6 +84,14 @@ function animate()
 			player.vx += -50;
 			
 		}
+		if(space)//teleport left
+		{
+			space = false;
+			player.x = player.x - canvas.width/2;
+
+
+		}
+		
 		
 	}
 
@@ -87,6 +105,15 @@ function animate()
 			player.vx += 50;
 		}
 
+		if(space)// teleport right 
+		{
+			space = false;
+			player.x = player.x + canvas.width/2;
+
+
+		}
+	
+
 	}
 
 	player.vx *= fX;//friction
@@ -97,6 +124,8 @@ function animate()
 
 	player.x += Math.round(player.vx);
 	player.y += Math.round(player.vy);/////
+
+	
 
 	
 while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
@@ -122,6 +151,32 @@ while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
 		player.y++;
 		player.vy = 0;
 	}
+
+	while(platform1.hitTestPoint(player.bottom()) && player.vy >=0)
+	{
+		player.y--;
+		player.vy = 0;
+		player.canJump = true;
+		jCount = 0;
+		console.log(ww)
+	}
+	while(platform1.hitTestPoint(player.left()) && player.vx <=0)
+	{
+		player.x++;
+		player.vx = 0;
+	}
+	while(platform1.hitTestPoint(player.right()) && player.vx >=0)
+	{
+		player.x--;
+		player.vx = 0;
+	}
+	while(platform1.hitTestPoint(player.top()) && player.vy <=0)
+	{
+		player.y++;
+		player.vy = 0;
+	}
+
+	
 	
 
 	/*-----------Use for State Machine ---------------------------------
@@ -129,6 +184,8 @@ while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
 	-------------------------------------------------------------------*/
 player.drawRect()	
 platform0.drawRect();
+platform1.drawRect();
+
 	
 }
 

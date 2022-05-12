@@ -20,48 +20,83 @@ player1.force = 2;
 var total = 5;
 var pt = [];
 var c = [];
-var colors= []
-var currentStates = 0;
-var state = []
+var colors= [];
+var currentState = 0;
+var states = [];
+
+//---------------Set Friction and Gravity-----------------//
+var frictionX = .87;	
+var frictionY = .87;
+var gravity = 1;
+//--------------------------------------------------------//
 
 
-
-for(var i=0; i < total; i++)
+for(var i = 0; i < total; i++)
 	{
-		
 		
 		c[i] = new GameObject({width:20, height:20});
 		c[i].color = "red";
 
 		c[i].x = Math.random() * canvas.width;
-		c[i].y = Math.random() * canvas.height;
+		c[i].y = Math.random() * -canvas.height;
 		c[i].vy += rand(5,5) ;
 
 		pt[i] = new GameObject({width:20, height:20});
 		pt[i].color = "green";
 
 		pt[i].x = Math.random() * canvas.width;
-		pt[i].y = Math.random() * canvas.height;
+		pt[i].y = Math.random() * -canvas.height;
 		pt[i].vy += rand(5,5) ;
 	}
-//------------------------------------------------------------------------------//
+
+//---------------------------------------------------------------------------------//
 
 
+//-------functions called------------------------//
+function reset()// reset all the particles to the top of the screen after the red circle collision condition is meet
+{
+	
+	for(var i = 0; i < total; i++)
+	{
+		
+	
+		c[i].color = "red";
+		c[i].x = Math.random() * canvas.width;
+		c[i].y = Math.random() * -canvas.height;
+		
 
-//---------------Set Friction and Gravity-----------------
-var frictionX = .97;	
-var frictionY = .97;
-var gravity = 1;
-//--------------------------------------------------------
+		
+		pt[i].color = "green";
+		pt[i].x = Math.random() * canvas.width;
+		pt[i].y = Math.random() * -canvas.height;
+
+		
+		
+	}
+	
+}
+
+function oldColor()//changes the players back to default color
+{
+	player1.color = ("#ffff00");
+
+
+}
+//---------------------------------------------//
+
+
 
 
 timer = setInterval(animate, interval);
 function animate()
 {
 	context.clearRect(0,0,canvas.width, canvas.height);
-	states[currentStates]();
-	
+	states[currentState]();
+}
 
+
+states[0]= function()
+{
 	//------Calls Controls for game------------------//
 	if(d)//if (d=true), (!s) means  d=false
 	{
@@ -83,29 +118,12 @@ function animate()
 
 	//----------------------------------------------//
 
-
-
-	
-	if(player1.hitTestObject(c[p]))
-	{
-		
-
-		p1Wins = 0;
-		player1.color = "Red";
-		pt[p].y = 0;
-		c[p].y = 0;
-		
-	}
-
-
-
-
 	
      //Paddle Canvas Collision----------------------------------------------//
 	 if(player1.x < 0 + player1.width/2)//left collison
 	 {
 		player1.x = 0 + player1.width/2
-		player1.vx=0;
+		player1.vx = 0;
 
 	 }
 
@@ -118,7 +136,6 @@ function animate()
 	//-------------------------------------------------------------------//
 
 
-
 	//----------Displays score-------------------------------------------//
 	context.save()
     context.font = "30px arial black"
@@ -127,35 +144,37 @@ function animate()
     context.restore();
 	////----------------------------------------------------------------//
 
+
 	//---Draws Objects to the canvas-----------------------//
-	state[0]
-	{
 	for(var p = 0; p < pt.length; p++)
 	{	
 
-
-		state[1];
-		if(player1.hitTestObject(c[p]))
+		
+		if(player1.hitTestObject(c[p]))//red circle collision condition
 		{
 			
-
 			p1Wins = 0;
 			player1.color = "Red";
+			setTimeout(oldColor,500);
+			pt[p].y = 0;
+			c[p].y = 0;
+			reset()
+			
+		}
+
+		
+		if(player1.hitTestObject(pt[p]))//green square condition
+		{
+			p1Wins++;
+			player1.color = "Green";
+			setTimeout(oldColor,500);
 			pt[p].y = 0;
 			c[p].y = 0;
 			
 		}
-
-		
-		if(player1.hitTestObject(pt[p]))
-		{
-			p1Wins++;
-			player1.color = "Green";
-		}
 		
 
-
-		if(pt[p].y >= canvas.height || c[p].y >= canvas.height)
+		if(pt[p].y >= canvas.height || c[p].y >= canvas.height)//resets particle back to top of canvas
 		{
 			pt[p].y = 0;
 			c[p].y = 0;
@@ -169,6 +188,7 @@ function animate()
 	}	
 		player1.drawRect();
 	//-----------------------------//
+
 }
-	
-}
+
+

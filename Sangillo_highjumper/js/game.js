@@ -7,10 +7,13 @@ var timer = setInterval(animate, interval);
 
 var fX = .85;//declare friciton
 var fY = .97;
-
 var gravity = 1;//declares gravity
+
+
+//-----------instinate Objects--------------------------------------//
 player = new GameObject({x:150, y:canvas.height - 150});
 var jCount = 0;
+var colorCount = 0;
 
 
 platform0 = new GameObject();
@@ -25,11 +28,8 @@ platform1.width = 300;
 platform1.height = 300;
 platform1.x = canvas.width/2;
 platform1.y = canvas.height/2 + 200;
-platform1.color = "#66ff33";
-
-
-
-
+platform1.color = "green";
+//--------------------------------------------------------------------//
 
 
 
@@ -49,7 +49,7 @@ function animate()
 {
 	context.clearRect(0,0,canvas.width, canvas.height);
 	
-	
+	//---Animated Controls--------------------------------------------------------//
 	if(w && player.canJump && player.vy >= 0)// animates movement
 	{
 
@@ -71,7 +71,6 @@ function animate()
 	}
 
 	
-
 	
 	if(a)
 	{
@@ -126,6 +125,23 @@ function animate()
 	player.y += Math.round(player.vy);/////
 
 	
+		if(c && platform1.color != "red")
+		{
+			platform1.color = "green";
+		}
+		
+		else if ( c && platform1!= "green")
+		{
+			platform1.color = "red"
+		}
+		
+
+
+	
+	
+//-----------------------------------------------------------//
+	
+
 
 	
 while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
@@ -177,7 +193,6 @@ while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
 	}
 
 	
-	
 
 	/*-----------Use for State Machine ---------------------------------
 	//states[currentState]();
@@ -188,6 +203,7 @@ platform1.drawRect();
 
 	
 }
+
 
 
 

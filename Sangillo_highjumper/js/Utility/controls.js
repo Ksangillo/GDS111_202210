@@ -2,6 +2,7 @@ var w = false;
 var a = false;
 var s = false;
 var d = false;
+var c = false;
 var aa = false;
 var dd = false;
 var ww = false;
@@ -10,6 +11,7 @@ var dashd;
 var dasha;
 var djump;
 var tcooldown;
+
 
 
 document.addEventListener("keydown", press);
@@ -39,6 +41,10 @@ function press(e)
 	if(e.keyCode == 32)
 	{
 		space = true;
+	}
+	if(e.keyCode == 67)
+	{
+		c = true;
 	}
 }
 
@@ -77,5 +83,11 @@ function release(e)
 		space = false;
 		clearTimeout(tcooldown);
 		tcooldown = setTimeout(function(){space=false;}, 300)
+	}
+
+	if(e.keyCode == 67)
+	{
+		c = false;
+		
 	}
 }

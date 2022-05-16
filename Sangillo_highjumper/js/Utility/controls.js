@@ -6,11 +6,13 @@ var c = false;
 var aa = false;
 var dd = false;
 var ww = false;
+var cc = false;
 var space = false;
 var dashd;
 var dasha;
 var djump;
 var tcooldown;
+var cCooldown;
 
 
 
@@ -80,14 +82,27 @@ function release(e)
 	}
 	if(e.keyCode == 32)
 	{
-		space = false;
 		clearTimeout(tcooldown);
+		space = false;
+		
 		tcooldown = setTimeout(function(){space=false;}, 300)
 	}
 
 	if(e.keyCode == 67)
 	{
+		clearTimeout(cCooldown);
 		c = false;
+		cCooldown = setTimeout(function(){c=false;}, 1000)
+
+		if(platform1.color == "#FF0000")
+		{
+			platform1.color = "#66ff33";
+		}
+		
+		else
+			platform1.color = "#FF0000";
+		
+		
 		
 	}
 }

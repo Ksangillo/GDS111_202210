@@ -28,7 +28,7 @@ platform1.width = 300;
 platform1.height = 300;
 platform1.x = canvas.width/2;
 platform1.y = canvas.height/2 + 200;
-platform1.color = "green";
+platform1.color = "#FF0000";
 //--------------------------------------------------------------------//
 
 
@@ -115,6 +115,7 @@ function animate()
 
 	}
 
+
 	player.vx *= fX;//friction
 	player.vy *= fY;
 	
@@ -125,25 +126,12 @@ function animate()
 	player.y += Math.round(player.vy);/////
 
 	
-		if(c && platform1.color != "red")
-		{
-			platform1.color = "green";
-		}
 		
-		else if ( c && platform1!= "green")
-		{
-			platform1.color = "red"
-		}
 		
-
-
-	
-	
+		
 //-----------------------------------------------------------//
 	
 
-
-	
 while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
 	{
 		player.y--;
@@ -168,7 +156,7 @@ while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
 		player.vy = 0;
 	}
 
-	while(platform1.hitTestPoint(player.bottom()) && player.vy >=0)
+	while(platform1.hitTestPoint(player.bottom()) && player.vy >=0 && platform1.color == "#FF0000")
 	{
 		player.y--;
 		player.vy = 0;
@@ -176,17 +164,17 @@ while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
 		jCount = 0;
 		console.log(ww)
 	}
-	while(platform1.hitTestPoint(player.left()) && player.vx <=0)
+	while(platform1.hitTestPoint(player.left()) && player.vx <=0 && platform1.color == "#FF0000")
 	{
 		player.x++;
 		player.vx = 0;
 	}
-	while(platform1.hitTestPoint(player.right()) && player.vx >=0)
+	while(platform1.hitTestPoint(player.right()) && player.vx >=0 && platform1.color == "#FF0000")
 	{
 		player.x--;
 		player.vx = 0;
 	}
-	while(platform1.hitTestPoint(player.top()) && player.vy <=0)
+	while(platform1.hitTestPoint(player.top()) && player.vy <=0 && platform1.color == "#FF0000")
 	{
 		player.y++;
 		player.vy = 0;

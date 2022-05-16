@@ -88,7 +88,7 @@ function release(e)
 		tcooldown = setTimeout(function(){space=false;}, 300)
 	}
 
-	if(e.keyCode == 67)
+	if(e.keyCode == 67)//changes the color of obsticles
 	{
 		clearTimeout(cCooldown);
 		c = false;

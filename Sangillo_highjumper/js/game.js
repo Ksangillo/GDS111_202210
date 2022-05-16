@@ -156,7 +156,7 @@ while(platform0.hitTestPoint(player.bottom()) && player.vy >=0)
 		player.vy = 0;
 	}
 
-	while(platform1.hitTestPoint(player.bottom()) && player.vy >=0 && platform1.color == "#FF0000")
+	while(platform1.hitTestPoint(player.bottom()) && player.vy >=0 && platform1.color == "#FF0000")//when the color is red the collision will be applied
 	{
 		player.y--;
 		player.vy = 0;

@@ -124,7 +124,7 @@ function magnet()
 	
 	follower.x += dx /25;
 	follower.y += dy /25;
-}
+}a
 
 function point()
 {

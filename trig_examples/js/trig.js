@@ -44,7 +44,7 @@ function animate()
 	//point(); //- points at the player
 	//follow(); //- follows the player
 	//orbit(); //- orbits the player using physics
-	//revolve(); //- orbits the player without physics.
+	revolve(); //- orbits the player without physics.
 	//sinWave(); //- moves the follower in a sin wave pattern from left to right
 	
 	
@@ -124,7 +124,7 @@ function magnet()
 	
 	follower.x += dx /25;
 	follower.y += dy /25;
-}a
+}
 
 function point()
 {

@@ -3,6 +3,7 @@ var a = false;
 var s = false;
 var d = false;
 var c = false;
+var v =false;
 var aa = false;
 var dd = false;
 var ww = false;
@@ -13,6 +14,7 @@ var dasha;
 var djump;
 var tcooldown;
 var cCooldown;
+
 
 
 
@@ -47,6 +49,11 @@ function press(e)
 	if(e.keyCode == 67)
 	{
 		c = true;
+	}
+	if(e.keyCode == 86)
+	{
+		v = true;
+		
 	}
 }
 
@@ -103,6 +110,14 @@ function release(e)
 			level.obsticle[i].color = "#FF0000";
 		
 	}
-		
 	}
+	if(e.keyCode == 86)
+	{
+
+	v = false;
+	
+	}
+		
+	
+	
 }

@@ -23,17 +23,19 @@ function Level()
 				[2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 				[2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 				[2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-				[2,2,2,2,1,0,0,0,0,0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0],
+				[2,2,2,2,1,0,0,0,0,0,0,0,0,0,4,0,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0],
 				[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
 				[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
 				[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
 				[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
 				
 			];
+			
 	
 	// stores the platforms and walls
 	this.grid = [];
 	this.obsticle =[];
+	this.turret = [];
 	//The coordinates of the level object
 	this.x = 0;
 	this.y = 0;
@@ -72,7 +74,8 @@ function Level()
 	
 		//The index number of the grid array. Platforms are stored in here
 		var g = 0;
-		var o =0;
+		var o = 0;
+		var t = 0;
 		//Used to place each tile.
 		var x = tileWidth/2;
 		var y = tileHeight/2;
@@ -114,6 +117,15 @@ function Level()
 						//increments the grid index
 						o++;
 					break;
+					case 4://obsticles
+					//creates the grid of objects
+					this.turret[t] = new GameObject({width:tileWidth, height:tileHeight, world:this});
+					this.turret[t].x = x;
+					this.turret[t].y = y;
+					this.turret[t].color = "orange";
+					//increments the grid index
+					t++;
+				break;
 				}
 				// moves the x coordinate for the next tile
 				x+=tileWidth;

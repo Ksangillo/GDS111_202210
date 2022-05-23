@@ -1,11 +1,15 @@
 
 var canvas = document.getElementById("canvas");
+
 var context = canvas.getContext("2d");
+
 var interval = 1000/60;
 var timer = setInterval(animate, interval);
 
 var player = new GameObject({width:50, height:50, angle:0, x:canvas.width/2, y:canvas.height-100, force:1, color:"gray"})
 var jCount = 0;
+
+var mouse = {x:0,y:0};
 
 //This is used to move the level elements
 var level = new Level();
@@ -23,8 +27,40 @@ var shield2 = new GameObject({width:50, height:50, angle:0, x:canvas.width/2, y:
 var offset = {x:player.vx, y:player.vy};
 
 var states =[];
-var currentState = "game";
+var currentState = "menu";
 var angle = 5;
+
+
+function changeStates(stateName)
+{
+	currentState = stateName;
+}
+
+states["menu"]=function()
+{
+
+	context.save();
+	context.fillstyle = "black"
+	context.font = "bold 40px Arial"
+	context.textAlign = "center";
+	context.fillStyle = "red";
+	context.fillText("HighJumper",canvas.width/2, 50)
+	context.fillText("(Developer:Kyle Sangillo)",canvas.width/2, 110)
+	context.fillText("Press Enter to start game",canvas.width/2, canvas.height/2-50)
+	context.restore();
+	
+if(enter)
+{
+	changeStates("game");
+}
+
+
+}
+
+
+
+
+
 
 
 //When moving the level, we first move the player as usual. Then we utilize an offset object to keep track of how much the collision detection affects the player's position. Then we move both the player and the level back the total number of pixels that the player moved over one loop of animation.
@@ -105,6 +141,8 @@ states["game"] = function()
 		shield1.drawRect();
 			
 	}	
+	
+	
 	
 		
 	player.vx *= fx;
@@ -313,8 +351,31 @@ states["game"] = function()
 	//Draws the player
 	player.drawRect();
 	//player.drawDebug();
+
+
+	if(esc)
+	{
+	
+		context.save();
+		context.fillStyle = "tan";
+		context.font = "bold 15px Arial"
+		context.textAlign = "center";
+		context.fillRect(canvas.width/2 -170, canvas.height/2 -200, 450, 400);
+		context.fillStyle = "white";
+		context.fillText("Press W to Jump or Twice to Double Jump.", canvas.width/2 + 50, canvas.height/2-150)
+		context.fillText("Press A or D to move Left or Right.", canvas.width/2+10, canvas.height/2 -110)
+		context.fillText("Press A or D Twice to Dash.", canvas.width/2 -26 , canvas.height/2 -80)
+		context.fillText("Press C to swap colors to pass through objects", canvas.width/2+55, canvas.height/2)
+		context.restore();
+	
+	
+	}
+		
+
 	
 }
+
+
 
 
 //--------------------------------------------Animation Loop-------------------------------------------

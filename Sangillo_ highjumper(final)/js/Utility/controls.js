@@ -3,7 +3,9 @@ var a = false;
 var s = false;
 var d = false;
 var c = false;
-var v =false;
+var v = false;
+var esc = false;
+var enter = false;
 var aa = false;
 var dd = false;
 var ww = false;
@@ -53,6 +55,16 @@ function press(e)
 	if(e.keyCode == 86)
 	{
 		v = true;
+		
+	}
+	if(e.keyCode == 13)
+	{
+		enter = true;
+		
+	}
+	if(e.keyCode == 27)
+	{
+		esc = true;
 		
 	}
 }
@@ -116,6 +128,18 @@ function release(e)
 
 	v = false;
 	
+	}
+
+	if(e.keyCode == 13)
+	{
+		enter = false;
+		
+	}
+
+	if(e.keyCode == 27)
+	{
+		esc = false;
+		escapedisplay = setTimeout(function(){c=false;}, 1000)
 	}
 		
 	

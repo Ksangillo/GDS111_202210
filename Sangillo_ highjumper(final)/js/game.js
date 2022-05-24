@@ -8,8 +8,15 @@ var timer = setInterval(animate, interval);
 
 var player = new GameObject({width:50, height:50, angle:0, x:canvas.width/2, y:canvas.height-100, force:1, color:"gray"})
 var jCount = 0;
+var escCount= 0;
+var movers =
+[
+	new GameObject({x:-50, y:200, width:50, height:50, color:"blue", vx:5}),
+	new GameObject({x:-150, y:200, width:50, height:50, color:"orange", vx:5})
+]
 
-var mouse = {x:0,y:0};
+
+
 
 //This is used to move the level elements
 var level = new Level();
@@ -38,15 +45,44 @@ function changeStates(stateName)
 
 states["menu"]=function()
 {
+	
+	for(var i = 0; i < movers.length; i++)
+	{
+		if(movers[1].x > canvas.width + 50 )
+		{
+			movers[0].vx = -5;
+			movers[0].y = canvas.height - 200;
+			movers[1].vx = -5;
+			movers[1].y = canvas.height - 200;
+			
+		}
+		movers[i].x += movers[i].vx;
+		movers[i].drawRect();
+	
+
+		
+	}
 
 	context.save();
 	context.fillstyle = "black"
 	context.font = "bold 40px Arial"
 	context.textAlign = "center";
-	context.fillStyle = "red";
+	context.fillStyle = "green";
 	context.fillText("HighJumper",canvas.width/2, 50)
+
+	context.fillStyle = "red";
+	context.font = "bold 25px Arial"
+	context.textAlign = "center";
 	context.fillText("(Developer:Kyle Sangillo)",canvas.width/2, 110)
-	context.fillText("Press Enter to start game",canvas.width/2, canvas.height/2-50)
+	
+	context.fillStyle = "orange";
+	context.fillRect(canvas.width/2-150, canvas.height/2-50, canvas.width/2-200, 50)
+
+	
+	context.fillStyle = "red";
+	context.font = "bold 20px Arial"
+	context.textAlign = "center";
+	context.fillText("Press Enter to start game",canvas.width/2, canvas.height/2-20)
 	context.restore();
 	
 if(enter)
@@ -56,11 +92,6 @@ if(enter)
 
 
 }
-
-
-
-
-
 
 
 //When moving the level, we first move the player as usual. Then we utilize an offset object to keep track of how much the collision detection affects the player's position. Then we move both the player and the level back the total number of pixels that the player moved over one loop of animation.
@@ -151,7 +182,7 @@ states["game"] = function()
 	player.vy += gravity;
 	player.x += Math.round(player.vx);
 	player.y += Math.round(player.vy);
-
+	
 	
 	//--------------------------------------------------------Collision code for tiles---------------------------------//
 	for(var i = 0; i < level.obsticle.length; i++)
@@ -333,6 +364,13 @@ states["game"] = function()
 			jCount = 0;
 			offset.y--;
 		}
+
+		if(player.y > canvas.height + 200)//resets player to menu if they fall to death
+	{
+
+		changeStates("menu");
+	}
+
 		
 	}
 	//----------------------------------------------------------------------------------------------------------------------//
@@ -355,24 +393,33 @@ states["game"] = function()
 
 	if(esc)
 	{
-	
+		escCount++;
 		context.save();
 		context.fillStyle = "tan";
 		context.font = "bold 15px Arial"
 		context.textAlign = "center";
-		context.fillRect(canvas.width/2 -170, canvas.height/2 -200, 450, 400);
-		context.fillStyle = "white";
-		context.fillText("Press W to Jump or Twice to Double Jump.", canvas.width/2 + 50, canvas.height/2-150)
-		context.fillText("Press A or D to move Left or Right.", canvas.width/2+10, canvas.height/2 -110)
-		context.fillText("Press A or D Twice to Dash.", canvas.width/2 -26 , canvas.height/2 -80)
-		context.fillText("Press C to swap colors to pass through objects", canvas.width/2+55, canvas.height/2)
+		context.fillRect(canvas.width/2 -170, canvas.height/2 -200, 450, 300);
+		context.fillStyle = "black";
+		context.fillText("INSTRUCTIONS:", canvas.width/2+20 , canvas.height/2-180)
+		context.fillStyle = "black";
+		context.fillText("* Press W to Jump or Twice to Double Jump.", canvas.width/2 , canvas.height/2-150)
+		context.fillText("* Press A or D to move Left or Right.", canvas.width/2-29, canvas.height/2 -120)
+		context.fillText("* Press A or D Twice to Dash.", canvas.width/2-54, canvas.height/2 -90)
+		context.fillText("* Press C to swap colors to pass through objects.", canvas.width/2+19, canvas.height/2-60)
+		context.fillText("* Green means you can pass through/Red means solid.", canvas.width/2+38, canvas.height/2-30)
+		context.fillText("* Hold V for shield to push enemies away.", canvas.width/2-10, canvas.height/2-5)
 		context.restore();
 	
-	
 	}
-		
-
 	
+	
+
+	context.save();
+	context.fillStyle ="black";
+	context.font = "bold 25px Arial"
+	context.textAlign = "left";
+	context.fillText("Hold Esc for Instructions.", canvas.width/2-450, canvas.height/2-350)
+	context.restore();
 }
 
 

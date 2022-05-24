@@ -5,6 +5,7 @@ var d = false;
 var c = false;
 var v = false;
 var esc = false;
+var esc2 = false;
 var enter = false;
 var aa = false;
 var dd = false;
@@ -17,6 +18,7 @@ var djump;
 var tcooldown;
 var cCooldown;
 
+var escCount= 0;
 
 
 
@@ -62,11 +64,14 @@ function press(e)
 		enter = true;
 		
 	}
-	if(e.keyCode == 27)
+	if(e.keyCode == 27  )
 	{
+		
 		esc = true;
 		
 	}
+
+	
 }
 
 function release(e)
@@ -123,6 +128,7 @@ function release(e)
 		
 	}
 	}
+
 	if(e.keyCode == 86)
 	{
 
@@ -136,11 +142,17 @@ function release(e)
 		
 	}
 
-	if(e.keyCode == 27)
+	if(e.keyCode == 27 )
 	{
+		
 		esc = false;
-		escapedisplay = setTimeout(function(){c=false;}, 1000)
+		
+		
+		
 	}
+	
+	
+
 		
 	
 	

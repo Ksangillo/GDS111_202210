@@ -84,6 +84,9 @@ states["menu"]=function()
 	context.textAlign = "center";
 	context.fillText("Press Enter to start game",canvas.width/2, canvas.height/2-20)
 	context.restore();
+
+	
+
 	
 if(enter)
 {
@@ -98,6 +101,8 @@ if(enter)
 
 states["game"] = function()
 {
+	
+
 	if(w && player.canJump && player.vy >= 0)// animates movement
 	{
 
@@ -299,29 +304,29 @@ states["game"] = function()
 			
 		}
 
-			//Hit top
-			while(level.turret[i].hitTestPoint(shield1.top()))//shield1 collision with turret
-			{
+		//Hit top
+		while(level.turret[i].hitTestPoint(shield1.top()))//shield1 collision with turret
+		{
 				
-				level.turret[i].y--;
+			level.turret[i].y--;
 				
-			}
-			//Hit right
-			while(level.turret[i].hitTestPoint(shield1.right()))
-			{
-				level.turret[i].vx--;
-				level.turret[i].x++;	
-			}
+		}
+		//Hit right
+		while(level.turret[i].hitTestPoint(shield1.right()))
+		{
+			level.turret[i].vx--;
+			level.turret[i].x++;	
+		}
 			//Hit left
-			while(level.turret[i].hitTestPoint(shield1.left()))
-			{
-				level.turret[i].x--;	
-			}
-			//Hit bottom
-			while(level.turret[i].hitTestPoint(shield1.bottom()))
-			{
-				level.turret[i].x--;
-			}
+		while(level.turret[i].hitTestPoint(shield1.left()))
+		{
+			level.turret[i].x--;	
+		}
+		//Hit bottom
+		while(level.turret[i].hitTestPoint(shield1.bottom()))
+		{
+			level.turret[i].x--;
+		}
 
 		}
 
@@ -365,12 +370,7 @@ states["game"] = function()
 			offset.y--;
 		}
 
-		if(player.y > canvas.height + 200)//resets player to menu if they fall to death
-	{
-
-		changeStates("menu");
-	}
-
+	
 		
 	}
 	//----------------------------------------------------------------------------------------------------------------------//
@@ -420,6 +420,9 @@ states["game"] = function()
 	context.textAlign = "left";
 	context.fillText("Hold Esc for Instructions.", canvas.width/2-450, canvas.height/2-350)
 	context.restore();
+
+
+
 }
 
 
